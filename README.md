@@ -172,7 +172,7 @@ Or you can import the following slack_manifest.json (customizing with your param
 
 Watch a demonstration of the tool in action:
 
-[![Demo Video](resources/demo.mp4)
+[🎥 Ver video](resources/demo.mp4)
 
 ## 🚀 Usage
 
