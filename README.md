@@ -59,7 +59,7 @@ In the current version, the backend uses an **in-memory database**. This means t
 - Team Manager account
 - Slack integration settings
 
-### 🔄 After Server Restart
+### 🔄 After Server Restart (in-memory database only)
 
 After restarting, you must:
 - **Recreate the Team Manager account**
@@ -172,7 +172,7 @@ Or you can import the following slack_manifest.json (customizing with your param
 
 Watch a demonstration of the tool in action:
 
-[![Demo Video](https://img.youtube.com/vi/<VIDEO_ID>/0.jpg)](https://www.youtube.com/watch?v=<VIDEO_ID>)
+[![Demo Video](resources/demo.mp4)
 
 ## 🚀 Usage
 
