@@ -1,0 +1,173 @@
+.Root {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.Root-belowNavBar {
+    background-color: var(--bg);
+    display: flex;
+    flex-flow: row;
+    flex: 1 1 auto;
+    margin-top: 61px;
+}
+
+.Root-content {
+    padding: 50px 110px;
+    margin-left: 66px;
+    display: flex;
+    width: 100%;
+}
+
+.page {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1;
+}
+
+.page-no-grow {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 0;
+}
+
+.individual {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 0px;
+    text-align: left;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.individual-left {
+    flex: 2;
+    padding: 30px;
+}
+
+.individual-middle {
+    flex: 0 0 1px;
+    background-color: var(--border-color);
+}
+
+.individual-right {
+    background-color: whitesmoke;
+    flex: 1;
+    display: flex;
+}
+
+.container-full {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.centered {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    display: flex;
+}
+
+.multi-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.multi-input-full {
+    padding: 30px;
+    border-bottom: var(--border);
+    margin: 0px;
+}
+
+.multi-input-half {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+}
+
+.multi-input-sep {
+    flex: 0 0 1px;
+    background-color: var(--border-color);
+    height: 1px;
+}
+
+.multi-input-half-left {
+    padding: 20px;
+    flex: 1;
+    margin: auto;
+}
+
+.multi-input-half-middle {
+    flex: 0 0 1px;
+    background-color: var(--bg);
+    width: 1px;
+}
+
+.multi-input-half-right {
+    padding: 20px;
+    flex: 1;
+    background-color: whitesmoke;
+}
+
+.multi-input-button {
+    padding: 5px 20px;
+}
+
+.multi-input-error {
+    color: red;
+}
+
+.multi-input-success {
+    color: green;
+}
+
+.multi-input-messages {
+    font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+input {
+    font-size: 16px;
+    padding: 10px;
+    border: var(--border);
+    border-radius: var(--border-radius);
+}
+
+h1 {
+    font-family: Verdana;
+    font-size: 40px;
+    font-weight: 300;
+}
+
+h2 {
+    font-family: Verdana;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+h3 {
+    font-family: Verdana;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.title {
+    text-align: left;
+}
+
+.link {
+    text-decoration: underline;
+}

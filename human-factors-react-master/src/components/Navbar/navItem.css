@@ -1,0 +1,30 @@
+.nav-item {
+  width: calc(var(--nav-size) * 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all;
+}
+
+/* Icon Button */
+.icon-button {
+  --button--size: calc(var(--nav-size) * 0.5);
+  width: var(--button--size);
+  height: var(--button--size);
+  padding: 5px;
+  margin: 2px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.2s;
+  border-radius: 50%;
+}
+
+.icon-button:hover {
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.icon-button-image {
+  height: 100%;
+}

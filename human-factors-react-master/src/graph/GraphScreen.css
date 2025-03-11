@@ -1,0 +1,5 @@
+svg rect {
+    fill: var(--bg);
+    stroke: var(--border-color);
+    fill-opacity: 0.8;
+}

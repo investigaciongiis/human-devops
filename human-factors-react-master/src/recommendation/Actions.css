@@ -1,0 +1,27 @@
+.Actions {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    min-width: 600px;
+}
+
+.no-error {
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.Actions-title {
+    margin-top: 0px;
+}
+
+.Action {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.Action-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+}

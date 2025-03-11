@@ -1,0 +1,59 @@
+.TeamMember {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 5px;
+}
+
+.TeamMember-email {
+    flex: 4;
+}
+
+.TeamMember-remove {
+    flex-flow: row-reverse;
+    text-align: right;
+    display: flex;
+    flex: 1;
+}
+
+.TeamMember-remove-button-image {
+    width: 20px;
+}
+
+.TeamScreen-members {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.TeamScreen-members-newMember-form {
+    text-align: left;
+    display: flex;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.TeamScreen-members-newMember-form-input {
+    flex: 3;
+    margin-right: 40px;
+}
+
+.TeamScreen-members-newMember-form-button {
+    flex: 1;
+}
+
+.TeamScreen-members-error {
+    background-color: var(--error-bg);
+    margin-bottom: 10px;
+    padding: 10px;
+    border: var(--error-border);
+    border-radius: var(--border-radius);
+    color: var(--error-color);
+    text-align: left;
+}
+
+input[type="time" i]:hover {
+    border-color: var(--border-color);
+}

@@ -1,0 +1,5 @@
+package com.suken27.humanfactorsjava.model;
+
+public enum Cluster {
+    SKILLS, PERCEPTION, PERSONALITY, PERCEPTION_AND_PERSONALITY, SUPPORT, MANAGEMENT, INFORMATION, CUSTOMER;
+}

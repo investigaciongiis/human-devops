@@ -1,0 +1,30 @@
+.navbar {
+  height: var(--nav-size);
+  background-color: var(--bg);
+  padding: 0 1rem;
+  border-bottom: var(--border);
+  width: calc(100% - 2rem);
+  display: flex;
+  position: fixed;
+  z-index: 1;
+}
+
+.navbar-logo {
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.NavBar-logo-link {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.navbar-nav {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
