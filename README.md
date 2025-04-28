@@ -170,7 +170,7 @@ Or you can import the following slack_manifest.json (customizing with your param
 
 ## 🎥 Demo Video
 
-Watch a demonstration of the tool in action:
+Watch a demonstration of the tool in action (click to watch on Youtube):
 
 [![🎥 Ver video](https://img.youtube.com/vi/kJinhw-8-mg/maxresdefault.jpg)](https://youtu.be/kJinhw-8-mg)
 
