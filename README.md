@@ -74,12 +74,25 @@ spring.datasource.url=jdbc:mysql://localhost:3306/my_database?serverTimezone=UTC
 spring.datasource.username=my_user
 spring.datasource.password=my_password
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
 ```
 
 Replace `my_database`, `my_user`, and `my_password` with your actual details.
 
-> If using MySQL 5.x, replace `MySQL8Dialect` with `MySQL5Dialect`.
+> Depending on your MySQL version, you still have to change `MySQLDialect`.
+> Note: your version of MySQL may not allow the `human-factors-java-main/src/main/resources/data.sql` script to be loaded into the database automatically, after starting it and before the subsequent Slack integration step, check if the script data was loaded correctly, if not load it into the database manually. Also, remember to add the necessary dependencies in the `human-factors-java-main/pom.xml` file for your version of MySQL. For example:
+```properties
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>8.0.33</version>
+</dependency>
+<dependency>
+    <groupId>org.hibernate.orm</groupId>
+    <artifactId>hibernate-community-dialects</artifactId>
+    <version>6.1.7.Final</version>
+</dependency>
+```
 
 Run the backend:
 
