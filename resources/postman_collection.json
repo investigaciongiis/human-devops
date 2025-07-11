@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "e6f3eb18-9cf8-43c8-99fa-e118373d74ca",
+		"name": "Human Factors API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8239306"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"{{user}}\",\n  \"password\": \"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{webApiEndpoint}}/api/signup",
+					"protocol": "https",
+					"host": [
+						"{{webApiEndpoint}}"
+					],
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"{{user}}\",\n  \"password\": \"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{webApiEndpoint}}/api/login",
+					"protocol": "https",
+					"host": [
+						"{{webApiEndpoint}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Password",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"oldPassword\": \"{{password}}\",\n  \"newPassword\": \"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{webApiEndpoint}}/api/user/password",
+					"protocol": "https",
+					"host": [
+						"{{webApiEndpoint}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Slack Integration",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{webApiEndpoint}}/api/user/integration",
+					"protocol": "https",
+					"host": [
+						"{{webApiEndpoint}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"integration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Teams",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{webApiEndpoint}}/api/teams",
+					"protocol": "https",
+					"host": [
+						"{{webApiEndpoint}}"
+					],
+					"path": [
+						"api",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Team Member",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{member}}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{webApiEndpoint}}/api/teams",
+					"protocol": "https",
+					"host": [
+						"{{webApiEndpoint}}"
+					],
+					"path": [
+						"api",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Team Member",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{webApiEndpoint}}/api/teams/{{member}}",
+					"protocol": "https",
+					"host": [
+						"{{webApiEndpoint}}"
+					],
+					"path": [
+						"api",
+						"teams",
+						"{{member}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Question Time",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{questionTime}}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{webApiEndpoint}}/api/teams/time",
+					"protocol": "https",
+					"host": [
+						"{{webApiEndpoint}}"
+					],
+					"path": [
+						"api",
+						"teams",
+						"time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Recommended Actions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{webApiEndpoint}}/api/teams/actions",
+					"protocol": "https",
+					"host": [
+						"{{webApiEndpoint}}"
+					],
+					"path": [
+						"api",
+						"teams",
+						"actions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Human Factors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{webApiEndpoint}}/api/humanfactor",
+					"protocol": "https",
+					"host": [
+						"{{webApiEndpoint}}"
+					],
+					"path": [
+						"api",
+						"humanfactor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Human Factor by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{webApiEndpoint}}/api/humanfactor/{{humanFactorId}}",
+					"protocol": "https",
+					"host": [
+						"{{webApiEndpoint}}"
+					],
+					"path": [
+						"api",
+						"humanfactor",
+						"{{humanFactorId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
