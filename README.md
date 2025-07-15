@@ -10,182 +10,281 @@ This project, **Human-DevOps**, consists of two separate subprojects interacting
 ### 🔧 Backend
 
 - Java 17
-- Docker
+- MySQL 8
+- Docker >= 20.10
+- Docker Compose >=2.5
 - SSL Certificate (**HTTPS** required)
 
-> **⚠️ Important:** Ensure the backend is running with a valid and fully trusted SSL certificate. Slack integration requires HTTPS.
+> ⚠️ **Important:** Make sure the backend runs with a valid and fully trusted SSL certificate.  
+> Slack integration **requires HTTPS** with a full chain SSL certificate.  
+> If not, Slack integration **will not work**.
 
-### 🎨 Frontend
-
-- Node.js
-- Docker
 
 ## 📂 Project Structure
 
 ```
 Human-DevOps/
-├── human-factors-java-main/   # Backend Java (Spring Boot)
-└── human-factors-react-master/ # Frontend React
+├── backend/	# Backend Java (Spring Boot)
+└── frontend/	# Frontend React
 ```
 
 ## 🚀 Installation and Configuration
 
-### 🔧 Backend Configuration
+### 🎥 Installation & Demo Video
+
+Watch a single video covering installation, configuration, and a demo of the application:
+
+> **ℹ️ Note:** This video shows the full end-to-end installation process and a demonstration of the tool. Some URLs or interfaces may have changed slightly since recording.
+
+[![🎥 Installation & Demo](https://img.youtube.com/vi/p8EfvTKImXs/maxresdefault.jpg)](https://youtu.be/p8EfvTKImXs)
+
+
+### 🧾 1. Clone the repository
+First, clone the repository:
+
+```bash
+git clone https://github.com/investigaciongiis/human-devops.git
+cd human-devops
+```
+
+### 🔐 2. Prepare SSL Certificates
+
+To enable HTTPS and ensure Slack integration works correctly, you must provide valid SSL files with the following requirements:
+
+nginx/ssl/fullchain.pem – This file must include the full certificate chain (leaf + intermediate + root certificates).
+
+nginx/ssl/privatekey.pem – This file must contain the private key corresponding to the certificate.
+
+⚠️ Important: If these files are invalid, incomplete, or missing, the application will fail to start correctly, and Slack OAuth will not function.
+
+Make sure both files are placed in the appropriate directory:
+
+```
+nginx/
+└── ssl/
+    ├── fullchain.pem        # Full certificate chain
+    └── privatekey.pem      # Private key
+```
+
+### 📄 3. Configuration of `nginx.conf` file
+
+Make sure to update the `server_name` in your NGINX configuration. Replace `<DNS_DOMAIN>` with your actual domain:
+
+```nginx
+
+# Redirect HTTP → HTTPS
+server {
+  listen 80;
+  server_name <DNS_DOMAIN> www.<DNS_DOMAIN>;
+  return 301 https://$host$request_uri;
+}
+
+# HTTPS server
+server {
+  listen 443 ssl;
+  server_name <DNS_DOMAIN> www.<DNS_DOMAIN>;
+
+  ssl_certificate /etc/nginx/ssl/fullchain.pem;
+  ssl_certificate_key /etc/nginx/ssl/privatekey.pem;
+
+  root /usr/share/nginx/html;
+  index index.html;
+
+  location / {
+    try_files $uri /index.html;
+  }
+
+  location /api/ {
+    proxy_pass http://human-factors-app:8080/;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+  }
+
+  error_page 404 /index.html;
+}
+
+```
+
+📝 Note: Replace <DNS_DOMAIN> with your actual domain (e.g., mydomain.com). This is required for HTTPS redirection and Slack OAuth integration.
+
+
+### 💬 4. Slack Integration
+
+To integrate with Slack, we **recommend importing the preconfigured manifest**:
+
+> ✅ **Recommended Option**: Import `slack_manifest.json`
+
+1. Go to [https://api.slack.com/apps](https://api.slack.com/apps)
+2. Log in to Slack
+3. Click **"Create New App"** → **"From an app manifest"**
+4. Select/create your workspace
+5. Choose **"JSON"** and paste the contents of:
+
+```bash
+./resources/slack_manifest.json
+```
+
+Customize the values (e.g., URLs or app name) as needed
+
+This will automatically configure:
+
+- **Slash command**: `/questions`  
+  → `<URL backend>/slack/events`
+- **OAuth Redirect URI**:  
+  → `<URL backend>/slack/oauth_redirect`
+- **Bot Scopes**:  
+  `chat:write`, `commands`, `incoming-webhook`, `app_mentions:read`, `channels:read`
+- **User Scopes**:  
+  `users:read`, `users:read.email`
+
+> ℹ️ **Note:** If you prefer to configure it manually, you can use the values shown in the `slack_manifest.json` file as reference.
+
+
+### 🔧 5. Server Configuration
 
 Update the following in:
 
-📄 `human-factors-java-main/src/main/resources/application.properties`
+📄 [`.env`](https://github.com/investigaciongiis/human-devops/blob/main/.env)
 
 ```properties
-server.port=<PORT>
 
-com.suken27.humanfactors.jwtSecret=<JWT_SECRET>
-com.suken27.humanfactors.slack.redirectURI=<URL backend>/slack/oauth_redirect
-com.suken27.humanfactors.slack.redirectURIPath=/slack/oauth_redirect
-com.suken27.humanfactors.slack.oauthCompletionURL=<URL backend>/slack/oauth/completion
-com.suken27.humanfactors.slack.oauthCancellationURL=<URL backend>/slack/oauth/cancellation
+SERVER_PORT_API=<SERVER_PORT_API>
 
-# Slack-specific configuration
-com.suken27.humanfactors.slack.signingSecret=<SIGNING_SECRET>
-com.suken27.humanfactors.slack.clientID=<CLIENT_ID>
-com.suken27.humanfactors.slack.clientSecret=<CLIENT_SECRET>
+JWT_SECRET=Omes56OgP3o12345adsf434mes56Ogmes56Og345adsf46y2  # Minimum 48 characters required
+
+SLACK_CLIENT_ID=<SLACK_CLIENT_ID>
+SLACK_SIGNING_SECRET=<SLACK_SIGNING_SECRET>
+SLACK_CLIENT_SECRET=<SLACK_CLIENT_SECRET>
+SLACK_REDIRECT_URI=<SERVER_DOMAIN>/api/slack/oauth_redirect
+
+SLACK_COMPLETION_URL=<SERVER_DOMAIN>/api/slack/oauth/completion
+SLACK_CANCELLATION_URL=<SERVER_DOMAIN>/api/slack/oauth/cancellation
+
+REACT_APP_API_URL=<SERVER_DOMAIN>/api/
+
 ```
 
-> **📝 Note:** Slack values (`SIGNING_SECRET`, `CLIENT_ID`, `CLIENT_SECRET`) are provided upon creating your Slack App.
-
-## 🗃️ Database Information
-
-In the current version, the backend uses an **in-memory database**. This means that **each time the server restarts, all data will be lost**, including:
-- Team Manager account
-- Slack integration settings
-
-### 🔄 After Server Restart (in-memory database only)
-
-After restarting, you must:
-- **Recreate the Team Manager account**
-- **Reconfigure Slack integration**
-
-### 🐬 MySQL Persistent Database Configuration
-
-To persist data, configure MySQL in `application.properties`:
-
+> **📝 Note 1:** Slack values (SLACK_CLIENT_ID, SLACK_SIGNING_SECRET, SLACK_CLIENT_SECRET) are provided when you create your Slack App. Example:
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/my_database?serverTimezone=UTC&useSSL=false
-spring.datasource.username=my_user
-spring.datasource.password=my_password
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+SLACK_CLIENT_ID=1443505669971.9147110231784
+SLACK_SIGNING_SECRET=f93d1ca7b2e64c3f9ad8e503a7c2e8b1
+SLACK_CLIENT_SECRET=b7f4e19a62c83dd5fa3b7ae29d54c0e1
+SERVER_DOMAIN=https://mydomain.com
 ```
-
-Replace `my_database`, `my_user`, and `my_password` with your actual details.
-
-> Depending on your MySQL version, you still have to change `MySQLDialect`.
-> Note: your version of MySQL may not allow the `human-factors-java-main/src/main/resources/data.sql` script to be loaded into the database automatically, after starting it and before the subsequent Slack integration step, check if the script data was loaded correctly, if not load it into the database manually. Also, remember to add the necessary dependencies in the `human-factors-java-main/pom.xml` file for your version of MySQL. For example:
+> **📝 Note 2:** It is recommended that JWT_SECRET be a secure, random string of at least 48 characters. Example:
 ```properties
-<dependency>
-    <groupId>com.mysql</groupId>
-    <artifactId>mysql-connector-j</artifactId>
-    <version>8.0.33</version>
-</dependency>
-<dependency>
-    <groupId>org.hibernate.orm</groupId>
-    <artifactId>hibernate-community-dialects</artifactId>
-    <version>6.1.7.Final</version>
-</dependency>
+JWT_SECRET=Omes56OgP3o12345adsf434mes56Ogmes56Og345adsf46y2
+
 ```
 
-Run the backend:
+### 🛠 6. Build and Start all services
+
+> ℹ️ **Note:** Make sure you have Docker (>= 20.10) and Docker Compose (>= 2.5) installed on your machine before running the following command.
+
+Build and launch all services using Docker Compose:
 
 ```bash
-docker-compose up --build
+
+docker compose up --build -d
+
 ```
+### 7. First Steps and Testing
 
-## 🌐 Frontend Configuration
+Once all services are up and running:
 
-Set the backend API URL by replacing `<URL backend>` in:
-- `human-factors-react-master/src/authentication/AuthService.ts`
-- `human-factors-react-master/src/team/TeamScreen.tsx`
+- **Access the application web UI**  
+  Open your frontend URL in a browser (e.g., `https://<YOUR_DOMAIN>/`).
 
-```typescript
-const API_URL = '<URL backend>';
-```
+- **Create a Team Manager account**  
+  Register as a new user and select the “Team Manager” role.
 
-Run the frontend:
+- **Log in with the Team Manager account**  
+  Sign in using the credentials you just created.
+
+- **Initiate Slack installation**  
+  From the application, in team click on “Add to Slack” and complete the installation.
+
+- **Return to Slack, refresh, and reinstall if needed**  
+  In your Slack workspace, reload the app and repeat the installation flow if required.
+
+- **Go to the Slack chat channel and run `/questions`**  
+  In Slack, type the slash command to launch the questionnaire.
+
+- **Verify integration in the app**  
+  Return to the web UI, go to the **Team** screen, and verify you see “Slack integration has been completed.”
+
+- **Add team members**  
+  First invite them with Slack, then with "Add selection" in home.
+
+- **Schedule questionnaire delivery time**  
+  Set in the app what time (daily) the questionnaire should be sent automatically.
+
+> ✔️ With these steps, your Human DevOps environment is ready for full testing and use.
+
+
+## 📦 Additional Information
+
+### 🗃️ Database Information (MySQL 8)
+
+The application uses MySQL 8, configured via Docker. On the first run:
+
+* A database called my_database is created.
+
+* User my_user with password my_password is granted access.
+
+* Spring Boot connects and automatically creates the required tables using JPA.
+
+* Initial data is optionally inserted via a Java seeder or data.sql.
+
+* All data is persisted using Docker volumes.
+
+Below is the database schema diagram:
+
+![Database Schema](resources/db_schema.png)
+
+
+### 🔁 Regenerating Docker Environment (SSL or Other Configuration Errors)
+
+ℹ️ Note: If you make a mistake during setup, for example, by not including the full SSL certificate chain, missing the private key, or any other misconfiguration, you’ll need to fully reset the environment to avoid unexpected behavior.
+
+⚠️ **Warning:** This will stop all containers and remove all volumes, deleting **all** data.
+
+Use the following command to stop and remove all containers and volumes:
 
 ```bash
-docker-compose up --build
+
+docker compose down -v
+
 ```
-
-## 💬 Slack Application Integration
-
-Create your Slack app with:
-
-- **Slash command**: `/questions`
-  - URL: `<URL backend>/slack/events`
-  - Description: Manually launch questions
-
-- **OAuth Redirect URLs**:
-  - `<URL backend>/slack/oauth_redirect`
-
-- **Bot Scopes**:
-  - `chat:write`, `commands`, `incoming-webhook`, `app_mentions:read`, `channels:read`
-
-- **User Scopes**:
-  - `users:read`, `users:read.email`
-
-Or you can import the following slack_manifest.json (customizing with your parameters):
-
-```json
-{
-    "display_information": {
-        "name": "<Name>",
-        "description": "<Description>"
-    },
-    "features": {
-        "slash_commands": [
-            {
-                "command": "/questions",
-                "url": "<URL backend>/slack/events",
-                "description": "Manually launch questions",
-                "usage_hint": "Manually launch questions",
-                "should_escape": false
-            }
-    },
-    "oauth_config": {
-        "redirect_urls": ["<URL backend>/slack/oauth_redirect"],
-        "scopes": {
-            "bot": [
-                "chat:write",
-                "commands",
-                "incoming-webhook",
-                "app_mentions:read",
-                "channels:read"
-            },
-            "user": ["users:read", "users:read.email"]
-    },
-    "settings": {
-        "interactivity": {
-            "is_enabled": true,
-            "request_url": "<URL backend>/slack/events"
-        },
-        "org_deploy_enabled": false
-    }
-}
-```
-
-### ⚡ Slack Integration Steps
-1. **Register as Team Manager** in the application.
-2. **Integrate Slack** via the Team Management screen after registering.
-
-## 🎬 Demo
-
-🔗 [Example Deployed Application](https://giis.inf.um.es/humanDevOps/)
 
 ## 🎥 Demo Video
 
-Watch a demonstration of the tool in action (click to watch on Youtube):
+Watch a single video a demo of the application:
 
-[![🎥 Ver video](https://img.youtube.com/vi/kJinhw-8-mg/maxresdefault.jpg)](https://youtu.be/kJinhw-8-mg)
+> **ℹ️ Note:** This video shows the full end-to-end installation process and a demonstration of the tool. Some URLs or interfaces may have changed slightly since recording.
+
+
+[![🎥 Demo](https://img.youtube.com/vi/3ZEJ9GrQfIk/maxresdefault.jpg)](https://youtu.be/3ZEJ9GrQfIk)
+
+## 🎬 Live Demo
+
+🔗 [Example Deployed Application](https://giis.inf.um.es/humanDevOps/)
+
+
+## 📘 API Documentation
+
+You can explore the full API via Swagger:
+
+[![API Docs](https://img.shields.io/badge/API-Swagger-blue)](https://editor.swagger.io/?url=https://github.com/investigaciongiis/human-devops/blob/main/resources/swagger.yaml)
+
+## 🧪 Postman Collection
+
+You can test the API using Postman with the following files available in the repository:
+
+- 📁 [Postman Collection (JSON)](https://github.com/investigaciongiis/human-devops/blob/main/resources/postman_collection.json)  
+- 🌐 [Postman Environment (JSON)](https://github.com/investigaciongiis/human-devops/blob/main/resources/postman_environment.json)
+
+> ✅ **Recommended:** Import both files into Postman to test the endpoints using environment variables.
 
 ## 🚀 Usage
 
@@ -197,9 +296,32 @@ Once integrated, the Team Manager has access to:
 - **Team Management**: Add or remove team members and launch questionnaires.
 - **Recommendations**: Access recommendations based on team input.
 
+
+## 🤝 How to contribute
+
+Thank you for your interest in contributing to this project!
+
+To contribute, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b my-feature`
+3. Make your changes and commit: `git commit -m 'Add new feature'`
+4. Push to your fork: `git push origin my-feature`
+5. Open a Pull Request
+
+Please make sure your code follows the project's style and structure.
+
+If you have questions or suggestions, feel free to open an issue.
+
+
 ## ❓ Support
 
 For any questions or issues, please open an issue in this GitHub repository.
+
+## 📬 Contact
+
+If you have questions or prefer to reach out by email, you can write to:  
+**investigaciongiis@gmail.com**
 
 ## 📜 License
 
@@ -208,3 +330,4 @@ MIT
 ---
 
 **🏛️ Software Engineering Research Group of the University of Murcia, Spain 🇪🇸**
+

@@ -123,7 +123,7 @@ export function drawNetwork({
       .call((text) =>
         text
           .selectAll("tspan")
-          .data(() => [d.title, d.score !== undefined && d.score !== null ? (d.score*100)+'%' : "Unmeasured"])
+          .data(() => [d.title, d.score !== undefined && d.score !== null ? (d.score*100).toFixed(0)+'%' : "Unmeasured"])
           .join("tspan")
           .attr("x", 0)
           .attr("y", (_: any, i: any) => `${i * 1.1}em`)

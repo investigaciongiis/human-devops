@@ -17,7 +17,7 @@ function Action(props: Readonly<ActionProps>) {
   return (
     <div className="Action">
       <div className="Action-title">
-        {props.title} {props.score * 100 + '%'} 
+        {props.title} {(props.score * 100).toFixed(0)}%
       </div>
       <div className="Action-description">{props.description}</div>
     </div>
