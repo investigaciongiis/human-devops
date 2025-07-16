@@ -16,10 +16,18 @@ interface ActionListProps {
 function Action(props: Readonly<ActionProps>) {
   return (
     <div className="Action">
-      <div className="Action-title">
-        {props.title} {(props.score * 100).toFixed(0)}%
+      <div className="Action-header">
+        <span className="Action-title">{props.title}</span>
+
+        <span
+          className="Action-score"
+          aria-label={`Score ${(props.score * 100).toFixed(0)} percent`}
+        >
+          {(props.score * 100).toFixed(0)}%
+        </span>
       </div>
-      <div className="Action-description">{props.description}</div>
+
+      <p className="Action-description">{props.description}</p>
     </div>
   );
 }
@@ -46,52 +54,58 @@ function ActionList(props: ActionListProps) : ReactElement[] {
   return rows;
 }
 
-export default function ActionScreen() : ReactElement {
+export default function ActionScreen(): ReactElement | null {
   const [actions, setActions] = useState<ActionProps[]>([]);
-  const [actionsRetrieveError, setActionsRetrieveError] =
-    useState<boolean>(false);
-  const [anyActions, setAnyActions] = useState<boolean>(false);
+  const [loaded, setLoaded] = useState(false);
+  const [retrieveError, setRetrieveError] = useState(false);
 
   useEffect(() => {
-    AuthService
-      .get("teams/actions", new AxiosHeaders())
-      .then((response) => {
-        setActions(response.data);
-        if (
-          response.data === undefined ||
-          response.data.length === undefined ||
-          response.data.length === 0
-        ) {
-          setAnyActions(false);
-        } else {
-          setAnyActions(true);
-        }
+    AuthService.get("teams/actions", new AxiosHeaders())
+      .then((res) => setActions(res.data ?? []))
+      .catch((err) => {
+        console.error(err);
+        setRetrieveError(true);
       })
-      .catch((error) => {
-        setActionsRetrieveError(true);
-        console.error(error);
-      });
+      .finally(() => setLoaded(true));
   }, []);
+
+  if (!loaded){
+    return (
+      <div className="container-full">
+        <div className="loading">Loading...</div>
+      </div>
+    );
+  }
+
+  const anyActions = actions.length > 0;
 
   return (
     <div className="Actions page">
-      <div className="error" hidden={!actionsRetrieveError}>
-        <h3 className="error">Retrieve error</h3>
-      </div>
-      <div className="error" hidden={anyActions}>
-        <h3 className="error">Incomplete team measurement</h3>
-        <p>
-          Your team does not have enough human factor measurements to provide
-          any action recommendations. Keep answering daily questions and
-          recommendations will start to appear.
-        </p>
-      </div>
-      <div className="no-error" hidden={actionsRetrieveError || !anyActions}>
-        <h3 className="Actions-title">Recommended actions</h3>
-        <div className="Actions-list">
-          <ActionList actions={actions} />
+      {retrieveError && (
+        <div className="error">
+          <h3>Retrieve error</h3>
         </div>
-      </div>
+      )}
+
+      {!retrieveError && !anyActions && (
+        <div className="error">
+          <h3>Incomplete team measurement</h3>
+          <p>
+            Your team does not have enough human factor measurements to provide
+            any action recommendations. Keep answering daily questions and
+            recommendations will start to appear.
+          </p>
+        </div>
+      )}
+
+      {!retrieveError && anyActions && (
+        <div className="no-error">
+          <h3 className="Actions-title">Recommended actions</h3>
+          <div className="Actions-list">
+            <ActionList actions={actions} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

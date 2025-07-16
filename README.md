@@ -1,4 +1,5 @@
 # 🚀 Human-DevOps
+![version](https://img.shields.io/badge/version-v1.0.0-blue)
 
 This project, **Human-DevOps**, consists of two separate subprojects interacting with each other:
 
@@ -7,12 +8,12 @@ This project, **Human-DevOps**, consists of two separate subprojects interacting
 
 ## 📋 Prerequisites
 
-### 🔧 Backend
-
 - Java 17
 - MySQL 8
 - Docker >= 20.10
 - Docker Compose >=2.5
+- API Slack
+- React 18.2.0
 - SSL Certificate (**HTTPS** required)
 
 > ⚠️ **Important:** Make sure the backend runs with a valid and fully trusted SSL certificate.  
@@ -20,12 +21,20 @@ This project, **Human-DevOps**, consists of two separate subprojects interacting
 > If not, Slack integration **will not work**.
 
 
+### 🖥️ Supported host operating systems
+- **Linux**
+- **macOS**
+- **Windows**
+
+> ℹ️ **Note for Windows users:** Docker Desktop requires WSL 2.
+
+
 ## 📂 Project Structure
 
 ```
 Human-DevOps/
-├── backend/	# Backend Java (Spring Boot)
-└── frontend/	# Frontend React
+├── backend/	# Back-end Java (Spring Boot)
+└── frontend/	# Front-end React
 ```
 
 ## 🚀 Installation and Configuration
@@ -35,6 +44,9 @@ Human-DevOps/
 Watch a single video covering installation, configuration, and a demo of the application:
 
 > **ℹ️ Note:** This video shows the full end-to-end installation process and a demonstration of the tool. Some URLs or interfaces may have changed slightly since recording.
+
+> **🔒 Security disclaimer:** The SSL certificate (`fullchain.pem`) and private key (`privatekey.pem`) used in the video are *dummy, self‑signed files* included **only** for demonstration purposes. They do **not** contain valid credentials and must **never** be reused in production. Always generate your own trusted certificates when deploying.
+
 
 [![🎥 Installation & Demo](https://img.youtube.com/vi/p8EfvTKImXs/maxresdefault.jpg)](https://youtu.be/p8EfvTKImXs)
 
@@ -116,8 +128,8 @@ To integrate with Slack, we **recommend importing the preconfigured manifest**:
 
 1. Go to [https://api.slack.com/apps](https://api.slack.com/apps)
 2. Log in to Slack
-3. Click **"Create New App"** → **"From an app manifest"**
-4. Select/create your workspace
+3. Select/create your workspace
+4. Click **"Create New App"** → **"From an app manifest"**
 5. Choose **"JSON"** and paste the contents of:
 
 ```bash
@@ -181,7 +193,7 @@ JWT_SECRET=Omes56OgP3o12345adsf434mes56Ogmes56Og345adsf46y2
 
 > ℹ️ **Note:** Make sure you have Docker (>= 20.10) and Docker Compose (>= 2.5) installed on your machine before running the following command.
 
-Build and launch all services using Docker Compose:
+Build and launch all services using Docker Compose **from the repository root**:
 
 ```bash
 
@@ -207,7 +219,7 @@ Once all services are up and running:
 - **Return to Slack, refresh, and reinstall if needed**  
   In your Slack workspace, reload the app and repeat the installation flow if required.
 
-- **Go to the Slack chat channel and run `/questions`**  
+- **Go to app channel and run `/questions`**  
   In Slack, type the slash command to launch the questionnaire.
 
 - **Verify integration in the app**  
@@ -243,13 +255,13 @@ Below is the database schema diagram:
 ![Database Schema](resources/db_schema.png)
 
 
-### 🔁 Regenerating Docker Environment (SSL or Other Configuration Errors)
+### 🔁 Resetting the Docker environment (SSL or other config errors)
 
-ℹ️ Note: If you make a mistake during setup, for example, by not including the full SSL certificate chain, missing the private key, or any other misconfiguration, you’ll need to fully reset the environment to avoid unexpected behavior.
+ℹ️ When to use this: If you started the stack with the wrong SSL files, an incorrect .env, or any other mis‑configuration, it’s usually faster to wipe everything and start fresh.
 
-⚠️ **Warning:** This will stop all containers and remove all volumes, deleting **all** data.
+⚠️ **Warning:** This command stops every container and removes all Docker volumes, deleting all data (database, uploads, etc.).
 
-Use the following command to stop and remove all containers and volumes:
+Run it **from the project root** (where docker-compose.yml is located):
 
 ```bash
 

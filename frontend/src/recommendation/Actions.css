@@ -23,5 +23,26 @@
 
 .Action-title {
     font-weight: 600;
+    margin: 0; 
+}
+
+.Action-header {
+    display: flex;
+    align-items: center;
     margin-bottom: 5px;
+}
+
+.Action-score {
+    background: #e0e7ff;
+    color: #1d4ed8;
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-left: 8px;
+}
+
+.Action-description {
+    margin: 0;
 }
