@@ -45,7 +45,7 @@ Watch a single video covering installation, configuration, and a demo of the app
 
 > **ℹ️ Note:** This video shows the full end-to-end installation process and a demonstration of the tool. Some URLs or interfaces may have changed slightly since recording.
 
-> **🔒 Security disclaimer:** The SSL certificate (`fullchain.pem`) and private key (`privatekey.pem`) used in the video are *dummy, self‑signed files* included **only** for demonstration purposes. They do **not** contain valid credentials and must **never** be reused in production. Always generate your own trusted certificates when deploying.
+> **🔒 Security disclaimer:** The SSL certificate (`fullchain.pem`) and private key (`privatekey.pem`) used in the video are *dummy, self-signed files* included **only** for demonstration purposes. They do **not** contain valid credentials and must **never** be reused in production. Always generate your own trusted certificates when deploying.
 
 
 [![🎥 Installation & Demo](https://img.youtube.com/vi/p8EfvTKImXs/maxresdefault.jpg)](https://youtu.be/p8EfvTKImXs)
@@ -78,49 +78,7 @@ nginx/
     └── privatekey.pem      # Private key
 ```
 
-### 📄 3. Configuration of `nginx.conf` file
-
-Make sure to update the `server_name` in your NGINX configuration. Replace `<DNS_DOMAIN>` with your actual domain:
-
-```nginx
-
-# Redirect HTTP → HTTPS
-server {
-  listen 80;
-  server_name <DNS_DOMAIN> www.<DNS_DOMAIN>;
-  return 301 https://$host$request_uri;
-}
-
-# HTTPS server
-server {
-  listen 443 ssl;
-  server_name <DNS_DOMAIN> www.<DNS_DOMAIN>;
-
-  ssl_certificate /etc/nginx/ssl/fullchain.pem;
-  ssl_certificate_key /etc/nginx/ssl/privatekey.pem;
-
-  root /usr/share/nginx/html;
-  index index.html;
-
-  location / {
-    try_files $uri /index.html;
-  }
-
-  location /api/ {
-    proxy_pass http://human-factors-app:8080/;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-  }
-
-  error_page 404 /index.html;
-}
-
-```
-
-📝 Note: Replace <DNS_DOMAIN> with your actual domain (e.g., mydomain.com). This is required for HTTPS redirection and Slack OAuth integration.
-
-
-### 💬 4. Slack Integration
+### 💬 3. Slack Integration
 
 To integrate with Slack, we **recommend importing the preconfigured manifest**:
 
@@ -152,44 +110,88 @@ This will automatically configure:
 > ℹ️ **Note:** If you prefer to configure it manually, you can use the values shown in the `slack_manifest.json` file as reference.
 
 
-### 🔧 5. Server Configuration
+### 🔧 4. Server Configuration
 
-Update the following in:
+To configure environment variables, use the provided .env.template file as a starting point.
 
-📄 [`.env`](https://github.com/investigaciongiis/human-devops/blob/main/.env)
+✅ Steps:
+
+1. Copy the template file to create your own .env file:
+
+```bash
+
+cp .env.template .env
+
+```
+
+2. Open the new .env file and edit the values to match your environment.
 
 ```properties
 
-SERVER_PORT_API=<SERVER_PORT_API>
+# ───── General ─────
+# Public domain name (e.g. humandevops.online)
+DNS_DOMAIN=<DNS_DOMAIN>
 
-JWT_SECRET=Omes56OgP3o12345adsf434mes56Ogmes56Og345adsf46y2  # Minimum 48 characters required
 
+
+# ───── Ports ─────
+# External HTTP port (used by NGINX)
+APP_PORT=80  
+
+# External HTTPS port (used by NGINX)
+SECURE_APP_PORT=443
+
+# Internal port exposed by the backend service
+SERVER_PORT_API=8080
+
+
+
+# ───── JWT Security ─────
+# Secret key for signing JWT tokens (min 48 characters) (e.g. DMes56OgD3o12445adsf434mes56OGmes56Og345adsf46y4)
+JWT_SECRET=<JWT_SECRET>
+
+# JWT expiration in milliseconds (7200000 = 2 hours)
+JWT_EXPIRATION_MS=7200000
+
+
+
+# ───── Slack Integration ─────
+# Slack App client ID (e.g. 1443505669971.9147110231784)
 SLACK_CLIENT_ID=<SLACK_CLIENT_ID>
-SLACK_SIGNING_SECRET=<SLACK_SIGNING_SECRET>
+
+# Slack App client secret (e.g. f93d1ca7b2e64c3f9ad8e503a7c2e8b1)
 SLACK_CLIENT_SECRET=<SLACK_CLIENT_SECRET>
-SLACK_REDIRECT_URI=<SERVER_DOMAIN>/api/slack/oauth_redirect
 
-SLACK_COMPLETION_URL=<SERVER_DOMAIN>/api/slack/oauth/completion
-SLACK_CANCELLATION_URL=<SERVER_DOMAIN>/api/slack/oauth/cancellation
+# Slack signing secret (e.g. b7f4e19a62c83dd5fa3b7ae29d54c0e1)
+SLACK_SIGNING_SECRET=<SLACK_SIGNING_SECRET>
 
-REACT_APP_API_URL=<SERVER_DOMAIN>/api/
+
+
+# ───── MySQL Database ─────
+# MySQL default port
+MYSQL_PORT=3306
+
+# Name of the database to use (e.g. my_database)
+MYSQL_DATABASE=<MYSQL_DATABASE>
+
+# MySQL user name (e.g. my_user)
+MYSQL_USER=<MYSQL_USER>
+
+# MySQL user password (e.g. my_password)
+MYSQL_PASSWORD=<MYSQL_PASSWORD>
+
+# MySQL root user password (e.g. my_root_password)
+MYSQL_ROOT_PASSWORD=<MYSQL_ROOT_PASSWORD>
+
 
 ```
 
-> **📝 Note 1:** Slack values (SLACK_CLIENT_ID, SLACK_SIGNING_SECRET, SLACK_CLIENT_SECRET) are provided when you create your Slack App. Example:
-```properties
-SLACK_CLIENT_ID=1443505669971.9147110231784
-SLACK_SIGNING_SECRET=f93d1ca7b2e64c3f9ad8e503a7c2e8b1
-SLACK_CLIENT_SECRET=b7f4e19a62c83dd5fa3b7ae29d54c0e1
-SERVER_DOMAIN=https://mydomain.com
-```
-> **📝 Note 2:** It is recommended that JWT_SECRET be a secure, random string of at least 48 characters. Example:
-```properties
-JWT_SECRET=Omes56OgP3o12345adsf434mes56Ogmes56Og345adsf46y2
+> **📝 Note 1:** Slack values (SLACK_CLIENT_ID, SLACK_SIGNING_SECRET, SLACK_CLIENT_SECRET) are provided when you create your Slack App.
+> **📝 Note 2:** It is recommended that JWT_SECRET be a secure, random string of at least 48 characters.
+> **📝 Note 3: Replace <DNS_DOMAIN> with your actual domain (e.g., mydomain.com). This is required for HTTPS redirection and Slack OAuth integration.
 
-```
 
-### 🛠 6. Build and Start all services
+### 🛠 5. Build and Start all services
 
 > ℹ️ **Note:** Make sure you have Docker (>= 20.10) and Docker Compose (>= 2.5) installed on your machine before running the following command.
 
@@ -200,7 +202,7 @@ Build and launch all services using Docker Compose **from the repository root**
 docker compose up --build -d
 
 ```
-### 7. First Steps and Testing
+### 6. First Steps and Testing
 
 Once all services are up and running:
 
@@ -257,9 +259,9 @@ Below is the database schema diagram:
 
 ### 🔁 Resetting the Docker environment (SSL or other config errors)
 
-ℹ️ When to use this: If you started the stack with the wrong SSL files, an incorrect .env, or any other mis‑configuration, it’s usually faster to wipe everything and start fresh.
+ℹ When to use this: If you started the stack with the wrong SSL files, an incorrect .env, or any other mis-configuration, it’s usually faster to wipe everything and start fresh.
 
-⚠️ **Warning:** This command stops every container and removes all Docker volumes, deleting all data (database, uploads, etc.).
+⚠ **Warning:** This command stops every container and removes all Docker volumes, deleting all data (database, uploads, etc.).
 
 Run it **from the project root** (where docker-compose.yml is located):
 
@@ -268,6 +270,18 @@ Run it **from the project root** (where docker-compose.yml is located):
 docker compose down -v
 
 ```
+
+### 🔐 Security Model
+
+This project follows a **DevSecOps** approach, integrating security checks from development through production.
+
+- **Secrets management:** *No tokens committed to VCS.* All credentials are injected at runtime via environment variables defined in `.env` **template** (kept in the repo).
+- **Transport security:** The NGINX reverse-proxy forces HTTPS (port 80→443) with a full-chain certificate. TLS is required by Slack’s signature validation.
+- **AuthN/AuthZ:** REST API secured with **Spring Security + JWT** (2 h exp). Secret length ≥ 48 chars (see `application.properties`).
+- **Slack scopes (least privilege):** `chat:write`, `commands`, `incoming-webhook`, `app_mentions:read`, `channels:read`, `users:read(.email)`—declared in `slack_manifest.json`.
+- **Container isolation:** All services run in a private Docker network (`human-net`). Only NGINX exposes ports externally; DB volumes are mounted on dedicated Docker volumes.
+- **TLS certificates:** The repo ships **empty placeholders** (`fullchain.pem`, `privkey.pem`).  
+  You must provide valid CA-signed certificates (or self-signed ones for local testing only).
 
 ## 🎥 Demo Video
 
