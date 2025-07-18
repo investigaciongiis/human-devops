@@ -48,7 +48,7 @@ Watch a single video covering installation, configuration, and a demo of the app
 > **🔒 Security disclaimer:** The SSL certificate (`fullchain.pem`) and private key (`privatekey.pem`) used in the video are *dummy, self-signed files* included **only** for demonstration purposes. They do **not** contain valid credentials and must **never** be reused in production. Always generate your own trusted certificates when deploying.
 
 
-[![🎥 Installation & Demo](https://img.youtube.com/vi/p8EfvTKImXs/maxresdefault.jpg)](https://youtu.be/p8EfvTKImXs)
+[![🎥 Installation & Demo](https://img.youtube.com/vi/vxce7Nbil78/maxresdefault.jpg)](https://youtu.be/vxce7Nbil78)
 
 
 ### 🧾 1. Clone the repository
@@ -78,6 +78,9 @@ nginx/
     └── privatekey.pem      # Private key
 ```
 
+👉 Initially, these files are empty placeholders.
+You must replace them with valid SSL certificates issued for your domain to enable secure communication and complete Slack verification successfully.
+
 ### 💬 3. Slack Integration
 
 To integrate with Slack, we **recommend importing the preconfigured manifest**:
@@ -91,7 +94,9 @@ To integrate with Slack, we **recommend importing the preconfigured manifest**:
 5. Choose **"JSON"** and paste the contents of:
 
 ```bash
-./resources/slack_manifest.json
+
+resources/slack_manifest.json
+
 ```
 
 Customize the values (e.g., URLs or app name) as needed
@@ -106,6 +111,8 @@ This will automatically configure:
   `chat:write`, `commands`, `incoming-webhook`, `app_mentions:read`, `channels:read`
 - **User Scopes**:  
   `users:read`, `users:read.email`
+- **Bot Events**:  
+  `app_home_opened`
 
 > ℹ️ **Note:** If you prefer to configure it manually, you can use the values shown in the `slack_manifest.json` file as reference.
 
@@ -186,9 +193,9 @@ MYSQL_ROOT_PASSWORD=<MYSQL_ROOT_PASSWORD>
 
 ```
 
-> **📝 Note 1:** Slack values (SLACK_CLIENT_ID, SLACK_SIGNING_SECRET, SLACK_CLIENT_SECRET) are provided when you create your Slack App.
-> **📝 Note 2:** It is recommended that JWT_SECRET be a secure, random string of at least 48 characters.
-> **📝 Note 3: Replace <DNS_DOMAIN> with your actual domain (e.g., mydomain.com). This is required for HTTPS redirection and Slack OAuth integration.
+* 📝 Note 1:** Slack values (SLACK_CLIENT_ID, SLACK_SIGNING_SECRET, SLACK_CLIENT_SECRET) are provided when you create your Slack App.
+* *📝 Note 2:** It is recommended that JWT_SECRET be a secure, random string of at least 48 characters.
+* *📝 Note 3: Replace <DNS_DOMAIN> with your actual domain (e.g., mydomain.com). This is required for HTTPS redirection and Slack OAuth integration.
 
 
 ### 🛠 5. Build and Start all services
@@ -218,8 +225,10 @@ Once all services are up and running:
 - **Initiate Slack installation**  
   From the application, in team click on “Add to Slack” and complete the installation.
 
-- **Return to Slack, refresh, and reinstall if needed**  
-  In your Slack workspace, reload the app and repeat the installation flow if required.
+- **Return to Slack and reinstall the app**  
+  Go back to your Slack workspace and reload the page.  
+  If prompted with a yellow banner saying scopes have changed, click **“Reinstall to Workspace”**.  
+  In the permissions screen that appears, make sure to **select the app itself as the posting channel** (e.g., `#HumanDevOps`), then click **Allow** to complete the installation.
 
 - **Go to app channel and run `/questions`**  
   In Slack, type the slash command to launch the questionnaire.
@@ -231,7 +240,7 @@ Once all services are up and running:
   First invite them with Slack, then with "Add selection" in home.
 
 - **Schedule questionnaire delivery time**  
-  Set in the app what time (daily) the questionnaire should be sent automatically.
+  Set in the app what time the questionnaire should be sent automatically each day, Monday through Friday.
 
 > ✔️ With these steps, your Human DevOps environment is ready for full testing and use.
 
@@ -290,7 +299,7 @@ Watch a single video a demo of the application:
 > **ℹ️ Note:** This video shows the full end-to-end installation process and a demonstration of the tool. Some URLs or interfaces may have changed slightly since recording.
 
 
-[![🎥 Demo](https://img.youtube.com/vi/3ZEJ9GrQfIk/maxresdefault.jpg)](https://youtu.be/3ZEJ9GrQfIk)
+[![🎥 Demo](https://img.youtube.com/vi/YyTtp7N2h1A/maxresdefault.jpg)](https://youtu.be/YyTtp7N2h1A)
 
 ## 🎬 Live Demo
 
