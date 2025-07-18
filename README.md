@@ -193,9 +193,11 @@ MYSQL_ROOT_PASSWORD=<MYSQL_ROOT_PASSWORD>
 
 ```
 
-* 📝 Note 1:** Slack values (SLACK_CLIENT_ID, SLACK_SIGNING_SECRET, SLACK_CLIENT_SECRET) are provided when you create your Slack App.
-* *📝 Note 2:** It is recommended that JWT_SECRET be a secure, random string of at least 48 characters.
-* *📝 Note 3: Replace <DNS_DOMAIN> with your actual domain (e.g., mydomain.com). This is required for HTTPS redirection and Slack OAuth integration.
+* 📝 Note 1: Slack values (SLACK_CLIENT_ID, SLACK_SIGNING_SECRET, SLACK_CLIENT_SECRET) are provided when you create your Slack App.
+* 📝 Note 2: It is recommended that JWT_SECRET be a secure, random string of at least 48 characters.
+* 📝 Note 3: Replace <DNS_DOMAIN> with your actual domain (e.g., mydomain.com). This is required for HTTPS redirection and Slack OAuth integration.
+* 📝 Note 4: Set the values for MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD, and MYSQL_ROOT_PASSWORD according to your own database configuration. If you're using Docker and initializing a new database container, these values will be used to create the database and user during the first startup.
+
 
 
 ### 🛠 5. Build and Start all services
@@ -268,7 +270,7 @@ Below is the database schema diagram:
 
 ### 🔁 Resetting the Docker environment (SSL or other config errors)
 
-ℹ When to use this: If you started the stack with the wrong SSL files, an incorrect .env, or any other mis-configuration, it’s usually faster to wipe everything and start fresh.
+When to use this: If you started the stack with the wrong SSL files, an incorrect .env, or any other mis-configuration, it’s usually faster to wipe everything and start fresh.
 
 ⚠ **Warning:** This command stops every container and removes all Docker volumes, deleting all data (database, uploads, etc.).
 
