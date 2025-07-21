@@ -45,10 +45,11 @@ Watch a single video covering installation, configuration, and a demo of the app
 
 > **ℹ️ Note:** This video shows the full end-to-end installation process and a demonstration of the tool. Some URLs or interfaces may have changed slightly since recording.
 
-> **🔒 Security disclaimer:** The SSL certificate (`fullchain.pem`) and private key (`privatekey.pem`) used in the video are *dummy, self-signed files* included **only** for demonstration purposes. They do **not** contain valid credentials and must **never** be reused in production. Always generate your own trusted certificates when deploying.
+> **🔒 Security disclaimer:** The SSL certificate (`fullchain.pem`) and private key (`privatekey.pem`) files included in the repository are empty placeholders, provided only as a reference for the correct file structure.
+These files do not contain any data and must be replaced with valid certificates and private keys for your domain during deployment.
+Similarly, no real credentials (e.g., tokens, secrets, passwords) are included in the repository. All sensitive values must be set manually in your .env file, using .env.template as a starting point.
 
-
-[![🎥 Installation & Demo](https://img.youtube.com/vi/vxce7Nbil78/maxresdefault.jpg)](https://youtu.be/vxce7Nbil78)
+[![🎥 Installation & Demo](https://img.youtube.com/vi/lFl-1p76_9w/maxresdefault.jpg)](https://youtu.be/lFl-1p76_9w)
 
 
 ### 🧾 1. Clone the repository
@@ -193,9 +194,9 @@ MYSQL_ROOT_PASSWORD=<MYSQL_ROOT_PASSWORD>
 
 ```
 
-* 📝 Note 1: Slack values (SLACK_CLIENT_ID, SLACK_SIGNING_SECRET, SLACK_CLIENT_SECRET) are provided when you create your Slack App.
+* 📝 Note 1: Replace <DNS_DOMAIN> with your actual domain (e.g., mydomain.com). This is required for HTTPS redirection and Slack OAuth integration.
 * 📝 Note 2: It is recommended that JWT_SECRET be a secure, random string of at least 48 characters.
-* 📝 Note 3: Replace <DNS_DOMAIN> with your actual domain (e.g., mydomain.com). This is required for HTTPS redirection and Slack OAuth integration.
+* 📝 Note 3: Slack values (SLACK_CLIENT_ID, SLACK_SIGNING_SECRET, SLACK_CLIENT_SECRET) are provided when you create your Slack App.
 * 📝 Note 4: Set the values for MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD, and MYSQL_ROOT_PASSWORD according to your own database configuration. If you're using Docker and initializing a new database container, these values will be used to create the database and user during the first startup.
 
 
@@ -312,7 +313,8 @@ Watch a single video a demo of the application:
 
 You can explore the full API via Swagger:
 
-[![API Docs](https://img.shields.io/badge/API-Swagger-blue)](https://editor.swagger.io/?url=https://github.com/investigaciongiis/human-devops/blob/main/resources/swagger.yaml)
+[![API Docs](https://img.shields.io/badge/API-Swagger-blue)](https://editor.swagger.io/?url=https://raw.githubusercontent.com/investigaciongiis/human-devops/main/resources/swagger.yaml)
+
 
 ## 🧪 Postman Collection
 
