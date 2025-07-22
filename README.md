@@ -315,6 +315,11 @@ You can explore the full API via Swagger:
 
 [![API Docs](https://img.shields.io/badge/API-Swagger-blue)](https://editor.swagger.io/?url=https://raw.githubusercontent.com/investigaciongiis/human-devops/main/resources/swagger.yaml)
 
+- [Swagger (YAML)](https://github.com/investigaciongiis/human-devops/blob/main/resources/swagger.yaml)  
+- [Raw YAML file (for manual copy)](https://raw.githubusercontent.com/investigaciongiis/human-devops/main/resources/swagger.yaml)
+
+> ⚠️ **Note:** In some browsers, the spec might not load directly in Swagger Editor due to CORS restrictions. If that happens, open the [raw YAML file](https://raw.githubusercontent.com/investigaciongiis/human-devops/main/resources/swagger.yaml), copy its contents, and paste it manually into [Swagger Editor](https://editor.swagger.io).
+
 
 ## 🧪 Postman Collection
 

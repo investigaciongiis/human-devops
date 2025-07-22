@@ -40,6 +40,7 @@ import com.suken27.humanfactorsjava.model.exception.MemberAlreadyInTeamException
 import com.suken27.humanfactorsjava.model.exception.QuestionNotFoundException;
 import com.suken27.humanfactorsjava.model.exception.TeamManagerNotFoundException;
 import com.suken27.humanfactorsjava.model.exception.TeamMemberNotFoundException;
+import com.suken27.humanfactorsjava.model.exception.OnlyOneUserAllowedException;
 import com.suken27.humanfactorsjava.model.scheduling.ScheduleController;
 import com.suken27.humanfactorsjava.repository.QuestionRepository;
 import com.suken27.humanfactorsjava.repository.TeamManagerRepository;
@@ -102,9 +103,12 @@ public class ModelController {
 
 	public TeamManagerDto registerTeamManager(String email, String password)
 			throws SchedulerException {
-		if (teamManagerRepository.findByEmail(email) != null) {
+		if (teamManagerRepository.count() > 0) {
+	        throw new OnlyOneUserAllowedException();
+	    }
+		/*if (teamManagerRepository.findByEmail(email) != null) {
 			throw new EmailInUseException(email);
-		}
+		}*/
 		TeamManager entity = new TeamManager(humanFactorFactory);
 		entity.setEmail(email);
 		entity.setPassword(passwordEncoder.encode(password));

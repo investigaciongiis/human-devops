@@ -99,7 +99,7 @@ export default function SignupScreen() {
               className="SignupScreen-menu-signup-form-error-message"
               hidden={!existingUserError}
             >
-              The email is already registered in the application.
+              User registration is restricted to a single user.
             </div>
             <div
               className="SignupScreen-menu-signup-form-error-message"
