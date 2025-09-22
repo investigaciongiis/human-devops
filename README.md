@@ -84,6 +84,8 @@ You must replace them with valid SSL certificates issued for your domain to enab
 
 ### 💬 3. Slack Integration
 
+Slack is a workplace communication platform that organizes team conversations into channels. Its rich API lets developers build bots, slash commands and custom workflows that post messages, react to events and integrate with third-party services. This flexibility makes Slack a powerful hub for automating processes, delivering notifications and streamlining information flow in collaborative environments.
+
 To integrate with Slack, we **recommend importing the preconfigured manifest**:
 
 > ✅ **Recommended Option**: Import `slack_manifest.json`
@@ -268,6 +270,10 @@ Below is the database schema diagram:
 
 ![Database Schema](resources/db_schema.png)
 
+### 🧩 Dependency relationships
+
+The file backend/src/main/resources/data.sql encodes the list of dependency relationships among factors, thereby facilitating both the integration of updates and the potential adaptation of the tool to entirely new conceptual models. It includes SQL statements that enable the population of the database with predefined human factors and their corresponding relationships. The initial section of the file specifies clusters of human factors, followed by the systematic specification of the dependency relationships between individual human factors. For the implementation of a novel conceptual model, it is sufficient to substitute the .sql file prior to installation.
+
 
 ### 🔁 Resetting the Docker environment (SSL or other config errors)
 
@@ -356,6 +362,11 @@ To contribute, follow these steps:
 Please make sure your code follows the project's style and structure.
 
 If you have questions or suggestions, feel free to open an issue.
+
+
+## 🐞 Issue reporting
+
+To facilitate effective issue management, a descriptive title, detailed steps to reproduce the problem, a comparison between expected and actual behavior, and relevant information about the operating environment should be provided.
 
 
 ## ❓ Support
