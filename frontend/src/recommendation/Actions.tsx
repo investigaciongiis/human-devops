@@ -100,7 +100,7 @@ export default function ActionScreen(): ReactElement | null {
 
       {!retrieveError && anyActions && (
         <div className="no-error">
-          <h3 className="Actions-title">Recommended actions</h3>
+          <h3 className="Actions-title">Actions ordered by recommendation priority</h3>
           <div className="Actions-list">
             <ActionList actions={actions} />
           </div>
