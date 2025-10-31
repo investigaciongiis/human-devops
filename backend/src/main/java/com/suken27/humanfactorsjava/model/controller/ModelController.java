@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import java.time.DayOfWeek;
 
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,14 @@ import com.suken27.humanfactorsjava.model.TeamHumanFactor;
 import com.suken27.humanfactorsjava.model.TeamManager;
 import com.suken27.humanfactorsjava.model.TeamMember;
 import com.suken27.humanfactorsjava.model.User;
+import com.suken27.humanfactorsjava.model.QuestionFrequency;
 import com.suken27.humanfactorsjava.model.dto.ActionDto;
 import com.suken27.humanfactorsjava.model.dto.HumanFactorDto;
 import com.suken27.humanfactorsjava.model.dto.QuestionDto;
 import com.suken27.humanfactorsjava.model.dto.TeamDto;
 import com.suken27.humanfactorsjava.model.dto.TeamManagerDto;
 import com.suken27.humanfactorsjava.model.dto.UserDto;
+import com.suken27.humanfactorsjava.model.dto.QuestionScheduleDto;
 import com.suken27.humanfactorsjava.model.exception.EmailInUseException;
 import com.suken27.humanfactorsjava.model.exception.HumanFactorNotFoundException;
 import com.suken27.humanfactorsjava.model.exception.IncorrectLoginException;
@@ -196,14 +199,37 @@ public class ModelController {
 		return new TeamDto(teamRepository.save(team));
 	}
 
-	public TeamDto modifyQuestionSendingTime(String teamManagerEmail, LocalTime questionSendingTime)
-			throws SchedulerException {
-		log.debug("Modifying question sending time to [{}] for team managed by [{}]", questionSendingTime,
-				teamManagerEmail);
-		Team team = teamRepository.findByTeamManagerEmail(teamManagerEmail);
-		team.setZonedQuestionSendingTime(questionSendingTime);
-		scheduleQuestions(team);
-		return new TeamDto(teamRepository.save(team));
+	public TeamDto modifyQuestionSchedule(
+	        String teamManagerEmail,
+	        LocalTime questionSendingTime,
+	        QuestionFrequency frequency,
+	        DayOfWeek dayOfWeek,
+	        Integer dayOfMonth) throws SchedulerException {
+
+	    Team team = teamRepository.findByTeamManagerEmail(teamManagerEmail);
+
+	    if (questionSendingTime != null) {
+	        team.setZonedQuestionSendingTime(questionSendingTime);
+	    }
+
+	    if (frequency == null) frequency = QuestionFrequency.DAILY;
+	    team.setQuestionFrequency(frequency);
+
+	    if (frequency == QuestionFrequency.WEEKLY) {
+	        team.setQuestionDayOfWeek(dayOfWeek != null ? dayOfWeek : DayOfWeek.MONDAY);
+	        team.setQuestionDayOfMonth(team.getQuestionDayOfMonth() == 0 ? 1 : team.getQuestionDayOfMonth());
+	    } else if (frequency == QuestionFrequency.MONTHLY) {
+	        int dom = (dayOfMonth == null || dayOfMonth < 1 || dayOfMonth > 28) ? 1 : dayOfMonth;
+	        team.setQuestionDayOfMonth(dom);
+	        if (team.getQuestionDayOfWeek() == null) team.setQuestionDayOfWeek(DayOfWeek.MONDAY);
+	    } else {
+	        if (team.getQuestionDayOfWeek() == null) team.setQuestionDayOfWeek(DayOfWeek.MONDAY);
+	        if (team.getQuestionDayOfMonth() == 0) team.setQuestionDayOfMonth(1);
+	    }
+
+	    scheduleQuestions(team);
+
+	    return new TeamDto(teamRepository.save(team));
 	}
 
 	public Map<UserDto, List<QuestionDto>> launchQuestions(String teamManagerEmail) {
@@ -291,10 +317,65 @@ public class ModelController {
 	}
 
 	private void scheduleQuestions(Team team) throws SchedulerException {
-		String cronExpression = "0 " + team.getQuestionSendingTime().getMinute() + " "
-				+ team.getQuestionSendingTime().getHour() + " ? * MON-FRI";
-		scheduleController.scheduleJob("QuestioningJob" + team.getId(), cronExpression, this, slackApp,
-				slackBlockBuilder, new TeamDto(team), team.getManager().getEmail());
+	    String cronExpression = buildCron(team);
+	    scheduleController.scheduleJob(
+	        "QuestioningJob" + team.getId(),
+	        cronExpression,
+	        this,
+	        slackApp,
+	        slackBlockBuilder,
+	        new TeamDto(team),
+	        team.getManager().getEmail()
+	    );
 	}
 
+	/**
+	 * Generate Cron Quartz:
+	 *  - DAILY  -> Monday-Friday to HH:mm
+	 *  - WEEKLY -> Day of week to HH:mm (use MON/TUE/…)
+	 *  - MONTHLY-> Day of month (1..28) to HH:mm
+	 */
+	private String buildCron(Team team) {
+	    int mm = team.getQuestionSendingTime().getMinute();
+	    int HH = team.getQuestionSendingTime().getHour();
+
+	    QuestionFrequency freq = team.getQuestionFrequency() == null
+	            ? QuestionFrequency.DAILY
+	            : team.getQuestionFrequency();
+
+	    switch (freq) {
+	        case DAILY:
+	            // Monday-Friday a HH:mm
+	            return String.format("0 %d %d ? * MON-FRI", mm, HH);
+
+	        case WEEKLY:
+	            // Day of week (MONDAY..FRIDAY)
+	            DayOfWeek dow = team.getQuestionDayOfWeek() == null ? DayOfWeek.MONDAY : team.getQuestionDayOfWeek();
+	            String quartzDow = toQuartzDow(dow); // MON/TUE/WED/...
+	            return String.format("0 %d %d ? * %s", mm, HH, quartzDow);
+
+	        case MONTHLY:
+	            // Day of month 1..28
+	            int dom = team.getQuestionDayOfMonth();
+	            if (dom < 1 || dom > 28) dom = 1;
+	            return String.format("0 %d %d %d * ?", mm, HH, dom);
+
+	        default:
+	            // DAILY
+	            return String.format("0 %d %d ? * MON-FRI", mm, HH);
+	    }
+	}
+
+	private String toQuartzDow(DayOfWeek d) {
+	    switch (d) {
+	        case MONDAY: return "MON";
+	        case TUESDAY: return "TUE";
+	        case WEDNESDAY: return "WED";
+	        case THURSDAY: return "THU";
+	        case FRIDAY: return "FRI";
+	        case SATURDAY: return "SAT";
+	        case SUNDAY: return "SUN";
+	        default: return "MON";
+	    }
+	}
 }

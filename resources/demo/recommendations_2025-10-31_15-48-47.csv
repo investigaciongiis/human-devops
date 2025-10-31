@@ -1,0 +1,75 @@
+id,title,description,score
+1,Feedback,"Provide feedback about the results and about the impacts of team members' work, individually.",75.0
+6,Methodology benefits,Performance expectancy is the most relevant factor for user acceptance. Focus on the benefits that the team will receive if the new methodology is used.,75.0
+16,Salary improvement,Improve salary or variable remuneration.,75.0
+17,Promotion,Improve promotion opportunities.,75.0
+18,Reduced interruptions,"Minimize administrative tasks and infrastructure issues, and reduce interruptions and meetings.",75.0
+19,Remote work,Allow and support working from home.,75.0
+20,Meeting rejection,Allow the rejection of meeting requests.,75.0
+21,Member autonomy,Increase team members autonomy.,75.0
+2,Empathetic team,Encourage the team to practice empathy.,50.0
+5,Trust belief actions,Trust belief for a development methodology relies on an individual trust towards the person that introduces the new methodology (see Trust).,50.0
+7,Non-collaborative people replacement,Replace non-collaborative people in key positions.,50.0
+8,Collaboration frequency,Increase collaboration frequency between team members. Real collaboration means that different team members work in the same task. Daily team meetings where team members can support each other enhance collaboration.,50.0
+9,Change benefits awareness,Raise awareness of the benefits of the changes.,50.0
+10,Change objectives awareness,Raise awareness of the reasons and objectives of the change.,50.0
+11,Change expectations alignment,Align expectations with the goals of change.,50.0
+12,Continuous improvement culture,"Encourage team members to look for ways to improve things. It is necessary that the company experiences a cultural shift where change is accepted, where employees and managers feel empowered to seek out and apply new ways to improve things and where there is courage to keep going when setbacks occur.",50.0
+13,Expert allocation,Allocate people experienced with the new methodology to the team.,50.0
+14,Member acknowledgement,Recognize team members' work. Make sure they receive compliments from supervisors after the work is done.,50.0
+15,Frequent communication in changing team,"In a scenario of frequent team member switches, provide frequent feedback, avoiding lack of communication until the project is finished.",50.0
+22,Member transfer,The inclusion of new team members fosters knowledge sharing from and towards the new members.,50.0
+23,Experienced mentors,Assign an experienced mentor to inexperienced team members to collaborate and share knowledge in order to improve on-the-job learning.,50.0
+24,Workshops,Organize workshops that might be taught by experienced members of the organization or by external consultants for relevant skills that are lacking in the team.,50.0
+25,Group dynamics activities,Organize group dynamics activities where an instructor suggests an activity analogous to a technical activity.,50.0
+29,Simultaneous projects reduction,Reduce the amount of simultaneous projects.,50.0
+30,Task complexity balance,Balance the cognitive complexity of the tasks among the team.,50.0
+31,Brief meetings,"Shorten the time spent in meetings, or increase time between them.",50.0
+32,Urgent tasks reduction,"Reduce the ammount of urgent tasks asigned to team members, or distribute them more evenly.",50.0
+33,Isolated planning phases,Reduce coding tasks during planning phases.,50.0
+34,No-meeting time,"Concentrate meetings on the same days, and assign no-meeting days.",50.0
+35,Interruption rejection,Allow team members to avoid interruptions from co-workers at inopportune moments.,50.0
+36,Muted communication channels,Allow team members to avoid distractions from communication channels.,50.0
+37,Flexible work hours,Allow flexible work hours.,50.0
+38,Timezones meetings scheduling,Improve the scheduling of meetings between timezones.,50.0
+39,Team contribution,Recognize and support team members' contributions to other co-workers. This kind of contributions should be considered positively at performance evaluations.,50.0
+40,Role understanding,Make sure everyone in the team knows the extent of their role and what is expected from them.,50.0
+41,Customer collaboration,Support a collaborative relationship with the customer. Facilitate the exchange of information between the team and the customer.,50.0
+42,Smaller offices,Provide smaller offices to achieve uninterrupted work.,50.0
+43,Goals self-reflection,Encourage team members to self-reflect about their goals and what are they doing to achieve them in a daily basis.,50.0
+44,Rotation reduced workload,New team members often experience an increase in cognitive workload after a job rotation. Reduce the assigned tasks to new members until they are fully adapted to the job.,50.0
+45,Cross-role collaboration,Enhance cross-role collaboration.,50.0
+48,Goal communication,Help team members understand the goal through intensive communication and participation.,50.0
+49,Job rotation reduction,Reduce the frequency of job rotation inside the organization. Frequent job rotation negatively affects the perception of well defined work.,50.0
+50,Multitask introduction,Introduce the team members to different tasks. Encourage learning from different areas of expertise and multitask workers.,50.0
+51,Challenging tasks distribution,Distribute the tasks in a way that every team member receives a task difficult enough to be challenging but not to be perceived as impossible.,50.0
+52,Learning tasks distribution,Distribute the tasks in a way that every team member can acquire useful knowledge for their career from task execution.,50.0
+53,Creative tasks distribution,Distribute evenly the tasks that involve creating new solutions for new and challenging problems.,50.0
+54,Thought-based communication,"A team with high levels of need for cognition will respond better to thought-based communication, rather than feeling-based communication.",50.0
+55,Collaboration incentives,Create incentives for collaboration in the group.,50.0
+58,Social influence actions,Social influence depends on the perceived usefulness of people known by an individual towards the new methodology (see Performance expectancy).,50.0
+61,Team product ownership,Encourage the team to acknowledge ownership over the product that is being developed. They should be personally responsible for the outcomes related to it.,50.0
+62,Knowledge transfer,"When a person or several people move out from a group, they must ensure the next person is able to continue the work.",50.0
+63,Transfer reduced workload,"In the situation of knowledge transfer caused by a team member assigned to another project in the same company, reduce workload for the person responsible of transferring the knowledge during the process.",50.0
+64,Knowledge registration,"Capture software architecture knowledge during the development process. This can be supported by web-based approaches, dedicated software architecture knowledge management toolsets, and UML-based solutions. Capturing knowledge should be lightweight and efficient.",50.0
+65,Knowledge maintenance,The software architecture knowledge captured should be maintained over time and the knowledge history should be tracked.,50.0
+66,Knowledge sharing,Share the architecture knowledge captured through a web interface or a wiki.,50.0
+67,Knowledge reuse,Separate generic and project-specific knowledge in order to enable knowledge reuse for generic knowledge.,50.0
+71,Cognitive recruitment,"Provide cognitive reasoning in recruiting messages. Software professionals are more receptive to cognitive (i.e., thought-based) recruiting messages.",50.0
+72,Unemotional recruitment,Avoid devoting resources to create an emotional link between the organization and candidates.,50.0
+73,Benefit recruitment,Focus the recruitment process on communicating upon reasons why the organization is attractive to future employees. Advertise work-life benefits.,50.0
+74,Cognitive candidates,"Actively look for people that enjoy effortful thinking. People that enjoy effortful thinking (need for cognition) are more probable to have a better performance. People that include high conscientiousness, openness to experience, humility-honesty, and low emotionality, are more probable to also have this personality trait.",50.0
+26,Financial resources allocation,"Allocate financial resources that may be used to hire consultants, train people, and assume the temporary deceleration of production sometimes experienced.",25.0
+27,Overtime work reduction,Avoid overtime work.,25.0
+28,Organizational pressure reduction,"Time pressures are an obstacle for software process improvement. While it might be difficult to avoid when caused by commercial pressure, time pressure caused by company culture or by effort estimation errors should be avoided.",25.0
+46,Face-to-face communication,Make sure that face-to-face communication is available for every team member.,25.0
+47,Peaceful environment,Discourage attacks against team members that might be caused by poor advices or inadequate explanations.,25.0
+56,Product teams,"Organize development teams in product teams. Product teams are usually small and promote skills over roles, self-organization, end-to-end product vision, cross-functionality (multidisciplinary), and have a single leadership over multiple management.",25.0
+59,Horizontal DevOps teams,"Instantiate Horizontal DevOps teams through centers of excellence, chapters, and/or platform teams. Centers of excellence and platform teams are external teams that support product teams with platform servicing, and chapters designate people with DevOps skills across different product teams.",25.0
+60,Dependency removal,"Remove dependencies with other teams composing the team of T-shaped members, i.e., people experienced in different areas that collaborate with each other, in a way that every skill-set required to have an end-to-end product vision is present in at least one member.",25.0
+68,Responsibility training,Train team members to take on more responsibility both in trainings and on the job by gradually granting them more responsibility; staff teams with a mix of experiences and new team members to foster on-the-job learning.,25.0
+69,Silos removal,Remove organizational and cultural silos. Any organizational structures that separate skill-sets or unable team self-organization hinder DevOps adoption.,25.0
+70,Methodology training,Let team members participate in development programs that train them in coping with the methodology and its challenges.,25.0
+3,Transparent tasks,Ensure that all the necessary information related to the team's tasks is always provided and transparent.,0.0
+4,Supportive team,"Foster the creation of a healthy and safe environment. The team should be a space where team members are open to talk about private issues, emotions and feelings.",0.0
+57,Member empowerment,"Increase the abilities, responsibilities, formal authority, effective capacity and involvement of broadly skilled frontline workers in problem solving, decision making and continuous improvement.",0.0

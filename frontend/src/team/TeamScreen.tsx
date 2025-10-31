@@ -42,6 +42,7 @@ const TeamMember = ({ email, members, setMembers, setMemberRemovalError }: TeamM
 
 type IntegrationStatus = "loading" | "completed" | "notCompleted";
 type MembersStatus = "loading" | "loaded";
+type QuestionFrequency = "DAILY" | "WEEKLY" | "MONTHLY";
 
 export const TeamScreen = () => {
   const [members, setMembers] = useState<TeamMemberData[]>([]);
@@ -57,6 +58,13 @@ export const TeamScreen = () => {
   const [questionTime, setQuestionTime] = useState("");
 
   const [integrationStatus, setIntegrationStatus] = useState<IntegrationStatus>("loading");
+
+  const [questionFrequency, setQuestionFrequency] = useState<QuestionFrequency>("DAILY");
+  const [questionDayOfWeek, setQuestionDayOfWeek] = useState<string>("MON");
+  const [questionDayOfMonth, setQuestionDayOfMonth] = useState<number>(1);
+  const [savingSchedule, setSavingSchedule] = useState<boolean>(false);
+  const [scheduleOk, setScheduleOk] = useState<string>("");
+  const [scheduleErr, setScheduleErr] = useState<string>("");
 
   /* ----------- Handlers ----------- */
   function handleNewMember() {
@@ -92,13 +100,41 @@ export const TeamScreen = () => {
   function handleQuestionTimeChange(e: React.FormEvent<HTMLInputElement>) {
     const time = (e.target as HTMLInputElement).value;
     setQuestionTime(time);
+  }
 
-    const headers = new AxiosHeaders();
-    headers["Content-Type"] = "text/plain";
+  async function handleSaveSchedule(e: React.FormEvent) {
+    e.preventDefault();
+    setScheduleOk("");
+    setScheduleErr("");
 
-    AuthService.put("teams/time", time, headers).catch(() => {
-      // TODO: show error
-    });
+    if (questionFrequency === "WEEKLY" && !questionDayOfWeek) {
+      setScheduleErr("Please select a day of week.");
+      return;
+    }
+    if (questionFrequency === "MONTHLY" && (questionDayOfMonth < 1 || questionDayOfMonth > 28)) {
+      setScheduleErr("Day of month must be between 1 and 28.");
+      return;
+    }
+
+    setSavingSchedule(true);
+    try {
+      const headers = new AxiosHeaders();
+      headers["Content-Type"] = "application/json";
+
+      const payload: any = {
+        questionSendingTime: questionTime,       // HH:mm
+        questionFrequency                       // DAILY|WEEKLY|MONTHLY
+      };
+      if (questionFrequency === "WEEKLY") payload.questionDayOfWeek = questionDayOfWeek;
+      if (questionFrequency === "MONTHLY") payload.questionDayOfMonth = questionDayOfMonth;
+
+      await AuthService.put("teams/time", JSON.stringify(payload), headers);
+      setScheduleOk("Schedule saved.");
+    } catch (err: any) {
+      setScheduleErr(typeof err?.message === "string" ? err.message : "Unexpected error saving schedule.");
+    } finally {
+      setSavingSchedule(false);
+    }
   }
 
   /* ----------- Data fetching ----------- */
@@ -109,6 +145,10 @@ export const TeamScreen = () => {
       .then((r) => {
         setMembers(r.data.members);
         setQuestionTime(r.data.questionSendingTime);
+
+        setQuestionFrequency((r.data.questionFrequency as QuestionFrequency) ?? "DAILY");
+        setQuestionDayOfWeek(r.data.questionDayOfWeek ?? "MON");
+        setQuestionDayOfMonth(Number.isInteger(r.data.questionDayOfMonth) ? r.data.questionDayOfMonth : 1);
       })
       .catch(() => setTeamRetrieveError(true))
       .finally(() => setMembersStatus("loaded"));
@@ -225,22 +265,106 @@ export const TeamScreen = () => {
       /* --- Question sending time --- */}
       <div className="individual">
         <div className="individual-left">
-          <h2>Question sending time</h2>
+          <h2>Question schedule</h2>
           <p>
-            Set the time at which the questions for human‑factor measurement will be sent from Monday to Friday. Questions
-            will be sent only once per day.
+            Set <b>when</b> and <b>how often</b> the human-factor questions are sent.
+            You can choose a time and a schedule (daily, weekly, or monthly).
           </p>
         </div>
+
         <div className="individual-middle"></div>
-        <div className="individual-right">
-          <div className="centered">
-            <input
-              type="time"
-              id="questionTime"
-              name="questionTime"
-              value={questionTime}
-              onInput={handleQuestionTimeChange}
-            />
+
+        <div className="individual-right individual-right2">
+
+          <div className="ts-panel">
+            <form className="TeamScreen-schedule" onSubmit={handleSaveSchedule}>
+              <div className="TeamScreen-schedule-grid">
+
+                <label htmlFor="questionFrequency" className="TeamScreen-schedule-label">Frequency</label>
+                <div className="select-wrapper">
+                  <select
+                    id="questionFrequency"
+                    value={questionFrequency}
+                    onChange={(e) => setQuestionFrequency(e.target.value as any)}
+                    className="ts-select"
+                  >
+                    <option value="DAILY">Daily</option>
+                    <option value="WEEKLY">Weekly</option>
+                    <option value="MONTHLY">Monthly</option>
+                  </select>
+                </div>
+
+                {questionFrequency === "DAILY" && (
+                  <>
+                    <span className="TeamScreen-schedule-label"></span>
+                    <label className="ts-checkbox">
+                      <span>Weekdays only (Mon–Fri)</span>
+                    </label>
+                  </>
+                )}
+
+                {questionFrequency === "WEEKLY" && (
+                  <>
+                    <label htmlFor="questionDayOfWeek" className="TeamScreen-schedule-label">Day of week</label>
+                    <div className="select-wrapper">
+                      <select
+                        id="questionDayOfWeek"
+                        value={questionDayOfWeek}
+                        onChange={(e) => setQuestionDayOfWeek(e.target.value)}
+                        className="ts-select"
+                      >
+                        <option value="MONDAY">Monday</option>
+                        <option value="TUESDAY">Tuesday</option>
+                        <option value="WEDNESDAY">Wednesday</option>
+                        <option value="THURSDAY">Thursday</option>
+                        <option value="FRIDAY">Friday</option>
+                      </select>
+                    </div>
+                  </>
+                )}
+
+                {questionFrequency === "MONTHLY" && (
+                  <>
+                    <label htmlFor="questionDayOfMonth" className="TeamScreen-schedule-label">Day of month</label>
+                    <div className="select-wrapper">
+                      <select
+                        id="questionDayOfMonth"
+                        value={questionDayOfMonth}
+                        onChange={(e) => setQuestionDayOfMonth(parseInt(e.target.value, 10))}
+                        className="ts-select"
+                      >
+                        {[...Array(28)].map((_, i) => (
+                          <option key={i + 1} value={i + 1}>
+                            {i + 1}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </>
+                )}
+
+                <label htmlFor="questionTime" className="TeamScreen-schedule-label">Time</label>
+                <input
+                  type="time"
+                  id="questionTime"
+                  name="questionTime"
+                  value={questionTime}
+                  onInput={handleQuestionTimeChange}
+                  className="ts-input"
+                />
+
+              </div>
+
+              <div className="TeamScreen-actions">
+                <button type="submit" className="TeamScreen-members-newMember-form-button ts-button" disabled={savingSchedule}>
+                  {savingSchedule ? "Saving…" : "Save schedule"}
+                </button>
+              </div>
+              <div className="TeamScreen-actions">
+                  {scheduleOk && <span className="ts-success">{scheduleOk}</span>}
+                  {scheduleErr && <span className="ts-error">{scheduleErr}</span>}
+              </div>
+            </form>
           </div>
         </div>
       </div>

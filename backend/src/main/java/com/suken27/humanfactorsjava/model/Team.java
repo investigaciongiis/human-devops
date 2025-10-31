@@ -21,6 +21,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import java.time.DayOfWeek;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
@@ -61,6 +64,15 @@ public class Team {
 	// interface
 	private String slackBotToken;
 
+	@Enumerated(EnumType.STRING)
+	private QuestionFrequency questionFrequency = QuestionFrequency.DAILY;
+
+	@Enumerated(EnumType.STRING)           
+	private DayOfWeek questionDayOfWeek = DayOfWeek.MONDAY;  
+
+	private int questionDayOfMonth = 1;    
+
+	
 	/**
 	 * This constructor should never be used. Use Team(TeamManager) instead.
 	 */
@@ -75,6 +87,9 @@ public class Team {
 		// This sets the question sending time to 9:00 spanish time.
 		questionSendingTime = LocalTime.of(9, 0);
 		timeZone = ZoneId.of("Europe/Madrid");
+		questionFrequency = QuestionFrequency.DAILY;
+		questionDayOfWeek = DayOfWeek.MONDAY;
+		questionDayOfMonth = 1;
 		setZonedQuestionSendingTime(questionSendingTime);
 		questionsPerDay = 10;
 		this.humanFactors = new HashMap<>();

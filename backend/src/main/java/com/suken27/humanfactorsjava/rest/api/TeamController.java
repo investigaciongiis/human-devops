@@ -3,6 +3,7 @@ package com.suken27.humanfactorsjava.rest.api;
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.List;
+import java.time.DayOfWeek;
 
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ import com.slack.api.methods.SlackApiException;
 import com.suken27.humanfactorsjava.model.controller.ModelController;
 import com.suken27.humanfactorsjava.model.dto.ActionDto;
 import com.suken27.humanfactorsjava.model.dto.TeamDto;
+import com.suken27.humanfactorsjava.model.dto.QuestionScheduleDto;
+
+import com.suken27.humanfactorsjava.model.QuestionFrequency;
 import com.suken27.humanfactorsjava.rest.exception.IncorrectEmailFormatException;
 import com.suken27.humanfactorsjava.rest.exception.IncorrectTimeFormatException;
 import com.suken27.humanfactorsjava.rest.util.ApiValidator;
@@ -45,6 +49,16 @@ public class TeamController {
     public ResponseEntity<?> getTeam() {
         String teamManagerEmail = SecurityContextHolder.getContext().getAuthentication().getName();
         TeamDto team = modelController.getTeam(teamManagerEmail);
+        
+        if (team.getQuestionFrequency() == null) {
+            team.setQuestionFrequency(QuestionFrequency.DAILY.name());
+        }
+        if (team.getQuestionDayOfWeek() == null) {
+            team.setQuestionDayOfWeek(DayOfWeek.MONDAY.name());
+        }
+        if (team.getQuestionDayOfMonth() == 0) {
+            team.setQuestionDayOfMonth(1);
+        }
         return ResponseEntity.ok().body(team);
     }
 
@@ -75,13 +89,39 @@ public class TeamController {
     }
 
     @PutMapping("/teams/time")
-    public ResponseEntity<?> modifyQuestionSendingTime(@RequestBody String questionSendingTime) throws SchedulerException {
-        LocalTime localTime = validator.parseTimeString(questionSendingTime);
-        if(localTime == null) {
-            return ResponseEntity.badRequest().body(new IncorrectTimeFormatException(questionSendingTime));
-        }
+    public ResponseEntity<?> modifyQuestionSchedule(@RequestBody QuestionScheduleDto dto) throws SchedulerException {
         String teamManagerEmail = SecurityContextHolder.getContext().getAuthentication().getName();
-        TeamDto team = modelController.modifyQuestionSendingTime(teamManagerEmail, localTime);
+
+        LocalTime localTime = validator.parseTimeString(dto.getQuestionSendingTime());
+        if (localTime == null) {
+            return ResponseEntity.badRequest().body(new IncorrectTimeFormatException(dto.getQuestionSendingTime()));
+        }
+
+        QuestionFrequency frequency;
+        try {
+            frequency = dto.getQuestionFrequency() != null
+                    ? QuestionFrequency.valueOf(dto.getQuestionFrequency())
+                    : QuestionFrequency.DAILY;
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body("Invalid questionFrequency value.");
+        }
+
+        DayOfWeek dayOfWeek = null;
+        if (dto.getQuestionDayOfWeek() != null) {
+            try {
+                dayOfWeek = DayOfWeek.valueOf(dto.getQuestionDayOfWeek());
+            } catch (IllegalArgumentException e) {
+                return ResponseEntity.badRequest().body("Invalid questionDayOfWeek value.");
+            }
+        }
+
+        Integer dayOfMonth = (dto.getQuestionDayOfMonth() != null && dto.getQuestionDayOfMonth() >= 1 && dto.getQuestionDayOfMonth() <= 28)
+                ? dto.getQuestionDayOfMonth()
+                : 1;
+
+        TeamDto team = modelController.modifyQuestionSchedule(
+                teamManagerEmail, localTime, frequency, dayOfWeek, dayOfMonth);
+
         return ResponseEntity.ok().body(team);
     }
 

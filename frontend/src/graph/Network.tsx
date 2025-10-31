@@ -30,15 +30,13 @@ export const Network = ({ data }: NetworkProps) => {
   });
 
   return (
-    <div className="flex1" style={{display: "flex", flexDirection: "column"}}>
-      <div className="flex1" ref={svgRef}>
-        <svg width={width} height={height}>
-          <g className="links" />
-          <g className="nodes" />
-          <g className="tooltip" />
-        </svg>
-      </div>
-    </div>
+    <div className="flex1" style={{ display: "flex", flexDirection: "column" }}>
+    <svg ref={svgRef} width={width} height={height}>
+      <g className="links" />
+      <g className="nodes" />
+      <g className="tooltip" />
+    </svg>
+  </div>
   );
 };
 

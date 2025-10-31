@@ -3,6 +3,7 @@
     flex-direction: column;
     text-align: left;
     min-width: 600px;
+    margin-top: 20px;
 }
 
 .no-error {
@@ -12,7 +13,7 @@
 }
 
 .Actions-title {
-    margin-top: 0px;
+    margin-top: 20px;
 }
 
 .Action {
@@ -45,4 +46,39 @@
 
 .Action-description {
     margin: 0;
+}
+
+.graph-toolbar2 {
+  position: absolute;
+  top: 70px;
+  bottom: unset;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 8px 10px;
+  z-index: 10;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+.graph-btn2 {
+  appearance: none;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #111827;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform .04s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.graph-btn2:hover { 
+    box-shadow: 0 6px 16px rgba(0,0,0,.08); 
+}
+.graph-btn2:active { 
+    transform: translateY(1px); 
 }

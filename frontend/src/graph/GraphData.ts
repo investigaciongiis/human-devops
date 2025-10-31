@@ -3,6 +3,7 @@ export interface Node extends d3.SimulationNodeDatum {
   title: string;
   cluster: string;
   score: number;
+  affectedBy: number[];
 }
 
 export interface Link extends d3.SimulationLinkDatum<Node> {

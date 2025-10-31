@@ -1,0 +1,64 @@
+id,title,description,cluster,score,affectedBy,affectsTo,affectedByCount,origin,fullyMeasured
+1,Trust,,PERCEPTION_AND_PERSONALITY,1.0,12-30-37-47-32-41-44-25,2-9,8,Inferred,false
+2,Trust belief,,PERCEPTION,0.5,1,3-8,1,Inferred,false
+3,Performance expectancy,,PERCEPTION,0.25,2-53-35,4,3,Inferred,false
+4,Imposition,,MANAGEMENT,0.75,5-3-61,5-6,3,Inferred,false
+5,Voluntariness,,PERCEPTION,0.25,4,4,1,Inferred,false
+6,Resistance to change,,PERCEPTION_AND_PERSONALITY,0.5,47-59-15-49-4-17-57-18,7,8,Inferred,false
+7,Motivation for change,,PERSONALITY,0.75,39-6,,2,Inferred,false
+8,Perceived risk,,PERCEPTION_AND_PERSONALITY,0.75,2-52,,2,Inferred,false
+9,Respect from supervisors,,SUPPORT,0.5,1-34,10-11,2,Inferred,false
+10,Satisfaction,,PERCEPTION,0.25,59-9-23-18,,4,Inferred,false
+11,Negative experiences,,PERCEPTION,0.5,50-58-9,,3,Inferred,false
+12,Technical and methodological skills,,SKILLS,0.75,51-14,1,2,Inferred,false
+13,Learning and forgetting,,PERSONALITY,0.0,,14,0,Measured,false
+14,Education and learning,,SKILLS,0.5,21-13,12-15-16,2,Inferred,false
+15,Leadership,,SUPPORT,0.25,14-25,6,2,Inferred,false
+16,Multitask workers,,MANAGEMENT,0.75,14-44,,2,Inferred,false
+17,Financial resources,,MANAGEMENT,0.75,,6,0,Measured,false
+18,Time/comercial pressures,,CUSTOMER,0.75,,10-19-6,0,Measured,false
+19,Perceived enjoyment,,PERCEPTION,0.5,31-18,,2,Inferred,false
+20,Focus,,PERSONALITY,0.5,34,21-22,1,Inferred,false
+21,Boredom,,PERSONALITY,0.75,36-20,14,2,Inferred,false
+22,Indifferent to change,,PERSONALITY,0.5,36-20-35,,3,Inferred,false
+23,Recognition and rewards,,SUPPORT,0.5,,10-24,0,Measured,false
+24,Humane orientation,,PERCEPTION,0.25,23,,1,Inferred,false
+25,Role understanding,,INFORMATION,0.5,,1-26-15,0,Measured,false
+26,Resistance to lead,,SUPPORT,0.5,25,,1,Inferred,false
+27,Customer involvement,,CUSTOMER,1.0,,28,0,Measured,false
+28,Customer risk factors,,CUSTOMER,0.75,27,,1,Inferred,false
+29,Self-efficacy,,PERCEPTION,0.5,30,30,1,Inferred,false
+30,Computer self-efficacy,,SKILLS,0.5,29,29-31-1,1,Inferred,false
+31,Effort expectancy,,PERCEPTION,0.5,30,19,1,Inferred,false
+32,Communication,,MANAGEMENT,0.75,,33-1-34,0,Measured,false
+33,Extraversion,,PERSONALITY,0.5,37-32,,2,Inferred,false
+34,The clarity of the goal,,INFORMATION,0.5,32,20-9,1,Inferred,false
+35,Lack of evidence of benefits,,INFORMATION,0.5,,3-36-22,0,Measured,false
+36,Engagement,,PERSONALITY,0.5,45-38-35,37-21-22-38,3,Inferred,false
+37,Team spirit,,PERSONALITY,0.5,42-40-36-41,33-1,4,Inferred,false
+38,Creativity and innovation,,PERSONALITY,0.5,42-36-41,36-39,3,Inferred,false
+39,Openness to experience,,PERSONALITY,0.75,38,7-40,1,Inferred,false
+40,Need for cognition,,PERSONALITY,0.5,50-47-39-55,37-41,4,Inferred,false
+41,Collaboration,,MANAGEMENT,0.75,40-57-44,42-37-38-1-43,3,Inferred,false
+42,Team work,,SKILLS,0.5,41,37-38,1,Inferred,false
+43,Product team,,MANAGEMENT,0.75,48-46-49-63-41-44,,6,Inferred,false
+44,Autonomous workers,,MANAGEMENT,1.0,,1-43-16-41,0,Measured,false
+45,Social influence,,PERCEPTION,0.5,,36,0,Measured,false
+46,Horizontal DevOps team,,MANAGEMENT,0.75,,43,0,Measured,false
+47,Conscientiousness,,PERSONALITY,0.5,,40-1-6,0,Measured,false
+48,Team autonomy,,MANAGEMENT,0.75,,43,0,Measured,false
+49,Product ownership sharing,,MANAGEMENT,0.5,,6-43,0,Measured,false
+50,Emotionality,,PERSONALITY,0.75,,11-40,0,Measured,false
+51,Knowledge transfer,,SKILLS,0.5,,12,0,Measured,false
+52,Optimism bias,,PERCEPTION,0.5,,8,0,Measured,false
+53,Compatibility,,PERCEPTION,0.5,,3,0,Measured,false
+54,Responsibility and decision skills,,SKILLS,0.75,,,0,Measured,false
+55,Honesty-Humility,,PERSONALITY,0.5,,40,0,Measured,false
+56,Supporters,,SUPPORT,0.5,59,,1,Inferred,false
+57,Organizational and cultural silos,,MANAGEMENT,0.75,,6-41,0,Measured,false
+58,Agreeableness,,PERSONALITY,0.5,,11,0,Measured,false
+59,Support of supervisors,,SUPPORT,0.5,,10-6-56,0,Measured,false
+60,Exhaustion from high autonomy and responsibility,,MANAGEMENT,0.75,,,0,Measured,false
+61,Continuous improvement culture,,MANAGEMENT,0.75,,4,0,Measured,false
+62,Recruitment,,MANAGEMENT,0.5,,,0,Measured,false
+63,Experienced and specialized members,,MANAGEMENT,0.75,,43,0,Measured,false

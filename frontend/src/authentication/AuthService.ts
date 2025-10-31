@@ -40,6 +40,10 @@ class AuthService {
     return localStorage.getItem("user");
   }
 
+  getToken() {
+    return localStorage.getItem("token");
+  }
+
   private manageError(error: any) {
     if (
       error instanceof AxiosError &&

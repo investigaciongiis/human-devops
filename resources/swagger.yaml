@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
   title: Human Factors API
-  version: 1.0.0
-  description: REST API for team management, authentication, and human factors
+  version: 1.1.0
+  description: REST API for team management, authentication, human factors, and recommendations. Includes export functionalities (CSV, JSON, XLSX) and flexible question scheduling.
 servers:
   - url: https://your-api.com
 
@@ -188,21 +188,43 @@ paths:
           description: Member removed
 
   /teams/time:
-    put:
-      summary: Update question sending time
-      tags: [Team]
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          text/plain:
-            schema:
-              type: string
-              example: "08:30"
-      responses:
-        '200':
-          description: Time updated
+        put:
+          summary: Update question schedule (time and frequency)
+          tags: [Team]
+          security:
+            - bearerAuth: []
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  required: [questionSendingTime, questionFrequency]
+                  properties:
+                    questionSendingTime:
+                      type: string
+                      example: "09:00"
+                      description: Hour when questions are sent.
+                    questionFrequency:
+                      type: string
+                      enum: [DAILY, WEEKLY, MONTHLY]
+                      example: WEEKLY
+                      description: Frequency of question sending.
+                    questionDayOfWeek:
+                      type: string
+                      enum: [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY]
+                      nullable: true
+                      description: Required only if frequency = WEEKLY.
+                    questionDayOfMonth:
+                      type: integer
+                      minimum: 1
+                      maximum: 28
+                      nullable: true
+                      description: Required only if frequency = MONTHLY.
+          responses:
+            '200':
+              description: Schedule updated successfully.
+
 
   /teams/actions:
     get:
@@ -329,6 +351,71 @@ paths:
                   fullyMeasured:
                     type: boolean
                     example: false
+
+  /humanfactor/export:
+        get:
+          summary: Export human factors data
+          tags: [Human Factors]
+          security:
+            - bearerAuth: []
+          parameters:
+            - name: format
+              in: query
+              required: true
+              schema:
+                type: string
+                enum: [csv, json, xlsx]
+              description: File format for export.
+          responses:
+            '200':
+              description: Exported file in the requested format.
+              content:
+                text/csv:
+                  schema:
+                    type: string
+                    format: binary
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      type: object
+                application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+                  schema:
+                    type: string
+                    format: binary
+
+  /actions/export:
+        get:
+          summary: Export recommended actions data
+          tags: [Team]
+          security:
+            - bearerAuth: []
+          parameters:
+            - name: format
+              in: query
+              required: true
+              schema:
+                type: string
+                enum: [csv, json, xlsx]
+              description: File format for export.
+          responses:
+            '200':
+              description: Exported file in the requested format.
+              content:
+                text/csv:
+                  schema:
+                    type: string
+                    format: binary
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      type: object
+                application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+                  schema:
+                    type: string
+                    format: binary
+
 
 components:
   securitySchemes:

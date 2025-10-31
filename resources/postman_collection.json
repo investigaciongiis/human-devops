@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "e6f3eb18-9cf8-43c8-99fa-e118373d74ca",
-		"name": "Human Factors API",
+		"name": "Human Factors API 2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "8239306"
 	},
@@ -255,21 +255,25 @@
 			"response": []
 		},
 		{
-			"name": "Update Question Time",
+			"name": "Update Question Schedule",
 			"request": {
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Authorization",
 						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{{questionTime}}",
+					"raw": "{\n  \"questionSendingTime\": \"09:00\",\n  \"questionFrequency\": \"WEEKLY\",\n  \"questionDayOfWeek\": \"MONDAY\"\n}",
 					"options": {
 						"raw": {
-							"language": "text"
+							"language": "json"
 						}
 					}
 				},
@@ -364,6 +368,68 @@
 				}
 			},
 			"response": []
+		},
+		{
+		  "name": "Export Human Factors",
+		  "request": {
+			"method": "GET",
+			"header": [
+			  {
+				"key": "Authorization",
+				"value": "Bearer {{token}}"
+			  }
+			],
+			"url": {
+			  "raw": "https://{{webApiEndpoint}}/api/humanfactor/export?format=csv",
+			  "protocol": "https",
+			  "host": [
+				"{{webApiEndpoint}}"
+			  ],
+			  "path": [
+				"api",
+				"humanfactor",
+				"export"
+			  ],
+			  "query": [
+				{
+				  "key": "format",
+				  "value": "csv"
+				}
+			  ]
+			}
+		  },
+		  "response": []
+		},
+		{
+		  "name": "Export Recommendations",
+		  "request": {
+			"method": "GET",
+			"header": [
+			  {
+				"key": "Authorization",
+				"value": "Bearer {{token}}"
+			  }
+			],
+			"url": {
+			  "raw": "https://{{webApiEndpoint}}/api/actions/export?format=csv",
+			  "protocol": "https",
+			  "host": [
+				"{{webApiEndpoint}}"
+			  ],
+			  "path": [
+				"api",
+				"actions",
+				"export"
+			  ],
+			  "query": [
+				{
+				  "key": "format",
+				  "value": "csv"
+				}
+			  ]
+			}
+		  },
+		  "response": []
 		}
 	]
 }

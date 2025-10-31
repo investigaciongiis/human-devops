@@ -1,0 +1,446 @@
+[
+  {
+    "id": 1,
+    "title": "Feedback",
+    "description": "Provide feedback about the results and about the impacts of team members' work, individually.",
+    "score": 75
+  },
+  {
+    "id": 6,
+    "title": "Methodology benefits",
+    "description": "Performance expectancy is the most relevant factor for user acceptance. Focus on the benefits that the team will receive if the new methodology is used.",
+    "score": 75
+  },
+  {
+    "id": 16,
+    "title": "Salary improvement",
+    "description": "Improve salary or variable remuneration.",
+    "score": 75
+  },
+  {
+    "id": 17,
+    "title": "Promotion",
+    "description": "Improve promotion opportunities.",
+    "score": 75
+  },
+  {
+    "id": 18,
+    "title": "Reduced interruptions",
+    "description": "Minimize administrative tasks and infrastructure issues, and reduce interruptions and meetings.",
+    "score": 75
+  },
+  {
+    "id": 19,
+    "title": "Remote work",
+    "description": "Allow and support working from home.",
+    "score": 75
+  },
+  {
+    "id": 20,
+    "title": "Meeting rejection",
+    "description": "Allow the rejection of meeting requests.",
+    "score": 75
+  },
+  {
+    "id": 21,
+    "title": "Member autonomy",
+    "description": "Increase team members autonomy.",
+    "score": 75
+  },
+  {
+    "id": 2,
+    "title": "Empathetic team",
+    "description": "Encourage the team to practice empathy.",
+    "score": 50
+  },
+  {
+    "id": 5,
+    "title": "Trust belief actions",
+    "description": "Trust belief for a development methodology relies on an individual trust towards the person that introduces the new methodology (see Trust).",
+    "score": 50
+  },
+  {
+    "id": 7,
+    "title": "Non-collaborative people replacement",
+    "description": "Replace non-collaborative people in key positions.",
+    "score": 50
+  },
+  {
+    "id": 8,
+    "title": "Collaboration frequency",
+    "description": "Increase collaboration frequency between team members. Real collaboration means that different team members work in the same task. Daily team meetings where team members can support each other enhance collaboration.",
+    "score": 50
+  },
+  {
+    "id": 9,
+    "title": "Change benefits awareness",
+    "description": "Raise awareness of the benefits of the changes.",
+    "score": 50
+  },
+  {
+    "id": 10,
+    "title": "Change objectives awareness",
+    "description": "Raise awareness of the reasons and objectives of the change.",
+    "score": 50
+  },
+  {
+    "id": 11,
+    "title": "Change expectations alignment",
+    "description": "Align expectations with the goals of change.",
+    "score": 50
+  },
+  {
+    "id": 12,
+    "title": "Continuous improvement culture",
+    "description": "Encourage team members to look for ways to improve things. It is necessary that the company experiences a cultural shift where change is accepted, where employees and managers feel empowered to seek out and apply new ways to improve things and where there is courage to keep going when setbacks occur.",
+    "score": 50
+  },
+  {
+    "id": 13,
+    "title": "Expert allocation",
+    "description": "Allocate people experienced with the new methodology to the team.",
+    "score": 50
+  },
+  {
+    "id": 14,
+    "title": "Member acknowledgement",
+    "description": "Recognize team members' work. Make sure they receive compliments from supervisors after the work is done.",
+    "score": 50
+  },
+  {
+    "id": 15,
+    "title": "Frequent communication in changing team",
+    "description": "In a scenario of frequent team member switches, provide frequent feedback, avoiding lack of communication until the project is finished.",
+    "score": 50
+  },
+  {
+    "id": 22,
+    "title": "Member transfer",
+    "description": "The inclusion of new team members fosters knowledge sharing from and towards the new members.",
+    "score": 50
+  },
+  {
+    "id": 23,
+    "title": "Experienced mentors",
+    "description": "Assign an experienced mentor to inexperienced team members to collaborate and share knowledge in order to improve on-the-job learning.",
+    "score": 50
+  },
+  {
+    "id": 24,
+    "title": "Workshops",
+    "description": "Organize workshops that might be taught by experienced members of the organization or by external consultants for relevant skills that are lacking in the team.",
+    "score": 50
+  },
+  {
+    "id": 25,
+    "title": "Group dynamics activities",
+    "description": "Organize group dynamics activities where an instructor suggests an activity analogous to a technical activity.",
+    "score": 50
+  },
+  {
+    "id": 29,
+    "title": "Simultaneous projects reduction",
+    "description": "Reduce the amount of simultaneous projects.",
+    "score": 50
+  },
+  {
+    "id": 30,
+    "title": "Task complexity balance",
+    "description": "Balance the cognitive complexity of the tasks among the team.",
+    "score": 50
+  },
+  {
+    "id": 31,
+    "title": "Brief meetings",
+    "description": "Shorten the time spent in meetings, or increase time between them.",
+    "score": 50
+  },
+  {
+    "id": 32,
+    "title": "Urgent tasks reduction",
+    "description": "Reduce the ammount of urgent tasks asigned to team members, or distribute them more evenly.",
+    "score": 50
+  },
+  {
+    "id": 33,
+    "title": "Isolated planning phases",
+    "description": "Reduce coding tasks during planning phases.",
+    "score": 50
+  },
+  {
+    "id": 34,
+    "title": "No-meeting time",
+    "description": "Concentrate meetings on the same days, and assign no-meeting days.",
+    "score": 50
+  },
+  {
+    "id": 35,
+    "title": "Interruption rejection",
+    "description": "Allow team members to avoid interruptions from co-workers at inopportune moments.",
+    "score": 50
+  },
+  {
+    "id": 36,
+    "title": "Muted communication channels",
+    "description": "Allow team members to avoid distractions from communication channels.",
+    "score": 50
+  },
+  {
+    "id": 37,
+    "title": "Flexible work hours",
+    "description": "Allow flexible work hours.",
+    "score": 50
+  },
+  {
+    "id": 38,
+    "title": "Timezones meetings scheduling",
+    "description": "Improve the scheduling of meetings between timezones.",
+    "score": 50
+  },
+  {
+    "id": 39,
+    "title": "Team contribution",
+    "description": "Recognize and support team members' contributions to other co-workers. This kind of contributions should be considered positively at performance evaluations.",
+    "score": 50
+  },
+  {
+    "id": 40,
+    "title": "Role understanding",
+    "description": "Make sure everyone in the team knows the extent of their role and what is expected from them.",
+    "score": 50
+  },
+  {
+    "id": 41,
+    "title": "Customer collaboration",
+    "description": "Support a collaborative relationship with the customer. Facilitate the exchange of information between the team and the customer.",
+    "score": 50
+  },
+  {
+    "id": 42,
+    "title": "Smaller offices",
+    "description": "Provide smaller offices to achieve uninterrupted work.",
+    "score": 50
+  },
+  {
+    "id": 43,
+    "title": "Goals self-reflection",
+    "description": "Encourage team members to self-reflect about their goals and what are they doing to achieve them in a daily basis.",
+    "score": 50
+  },
+  {
+    "id": 44,
+    "title": "Rotation reduced workload",
+    "description": "New team members often experience an increase in cognitive workload after a job rotation. Reduce the assigned tasks to new members until they are fully adapted to the job.",
+    "score": 50
+  },
+  {
+    "id": 45,
+    "title": "Cross-role collaboration",
+    "description": "Enhance cross-role collaboration.",
+    "score": 50
+  },
+  {
+    "id": 48,
+    "title": "Goal communication",
+    "description": "Help team members understand the goal through intensive communication and participation.",
+    "score": 50
+  },
+  {
+    "id": 49,
+    "title": "Job rotation reduction",
+    "description": "Reduce the frequency of job rotation inside the organization. Frequent job rotation negatively affects the perception of well defined work.",
+    "score": 50
+  },
+  {
+    "id": 50,
+    "title": "Multitask introduction",
+    "description": "Introduce the team members to different tasks. Encourage learning from different areas of expertise and multitask workers.",
+    "score": 50
+  },
+  {
+    "id": 51,
+    "title": "Challenging tasks distribution",
+    "description": "Distribute the tasks in a way that every team member receives a task difficult enough to be challenging but not to be perceived as impossible.",
+    "score": 50
+  },
+  {
+    "id": 52,
+    "title": "Learning tasks distribution",
+    "description": "Distribute the tasks in a way that every team member can acquire useful knowledge for their career from task execution.",
+    "score": 50
+  },
+  {
+    "id": 53,
+    "title": "Creative tasks distribution",
+    "description": "Distribute evenly the tasks that involve creating new solutions for new and challenging problems.",
+    "score": 50
+  },
+  {
+    "id": 54,
+    "title": "Thought-based communication",
+    "description": "A team with high levels of need for cognition will respond better to thought-based communication, rather than feeling-based communication.",
+    "score": 50
+  },
+  {
+    "id": 55,
+    "title": "Collaboration incentives",
+    "description": "Create incentives for collaboration in the group.",
+    "score": 50
+  },
+  {
+    "id": 58,
+    "title": "Social influence actions",
+    "description": "Social influence depends on the perceived usefulness of people known by an individual towards the new methodology (see Performance expectancy).",
+    "score": 50
+  },
+  {
+    "id": 61,
+    "title": "Team product ownership",
+    "description": "Encourage the team to acknowledge ownership over the product that is being developed. They should be personally responsible for the outcomes related to it.",
+    "score": 50
+  },
+  {
+    "id": 62,
+    "title": "Knowledge transfer",
+    "description": "When a person or several people move out from a group, they must ensure the next person is able to continue the work.",
+    "score": 50
+  },
+  {
+    "id": 63,
+    "title": "Transfer reduced workload",
+    "description": "In the situation of knowledge transfer caused by a team member assigned to another project in the same company, reduce workload for the person responsible of transferring the knowledge during the process.",
+    "score": 50
+  },
+  {
+    "id": 64,
+    "title": "Knowledge registration",
+    "description": "Capture software architecture knowledge during the development process. This can be supported by web-based approaches, dedicated software architecture knowledge management toolsets, and UML-based solutions. Capturing knowledge should be lightweight and efficient.",
+    "score": 50
+  },
+  {
+    "id": 65,
+    "title": "Knowledge maintenance",
+    "description": "The software architecture knowledge captured should be maintained over time and the knowledge history should be tracked.",
+    "score": 50
+  },
+  {
+    "id": 66,
+    "title": "Knowledge sharing",
+    "description": "Share the architecture knowledge captured through a web interface or a wiki.",
+    "score": 50
+  },
+  {
+    "id": 67,
+    "title": "Knowledge reuse",
+    "description": "Separate generic and project-specific knowledge in order to enable knowledge reuse for generic knowledge.",
+    "score": 50
+  },
+  {
+    "id": 71,
+    "title": "Cognitive recruitment",
+    "description": "Provide cognitive reasoning in recruiting messages. Software professionals are more receptive to cognitive (i.e., thought-based) recruiting messages.",
+    "score": 50
+  },
+  {
+    "id": 72,
+    "title": "Unemotional recruitment",
+    "description": "Avoid devoting resources to create an emotional link between the organization and candidates.",
+    "score": 50
+  },
+  {
+    "id": 73,
+    "title": "Benefit recruitment",
+    "description": "Focus the recruitment process on communicating upon reasons why the organization is attractive to future employees. Advertise work-life benefits.",
+    "score": 50
+  },
+  {
+    "id": 74,
+    "title": "Cognitive candidates",
+    "description": "Actively look for people that enjoy effortful thinking. People that enjoy effortful thinking (need for cognition) are more probable to have a better performance. People that include high conscientiousness, openness to experience, humility-honesty, and low emotionality, are more probable to also have this personality trait.",
+    "score": 50
+  },
+  {
+    "id": 26,
+    "title": "Financial resources allocation",
+    "description": "Allocate financial resources that may be used to hire consultants, train people, and assume the temporary deceleration of production sometimes experienced.",
+    "score": 25
+  },
+  {
+    "id": 27,
+    "title": "Overtime work reduction",
+    "description": "Avoid overtime work.",
+    "score": 25
+  },
+  {
+    "id": 28,
+    "title": "Organizational pressure reduction",
+    "description": "Time pressures are an obstacle for software process improvement. While it might be difficult to avoid when caused by commercial pressure, time pressure caused by company culture or by effort estimation errors should be avoided.",
+    "score": 25
+  },
+  {
+    "id": 46,
+    "title": "Face-to-face communication",
+    "description": "Make sure that face-to-face communication is available for every team member.",
+    "score": 25
+  },
+  {
+    "id": 47,
+    "title": "Peaceful environment",
+    "description": "Discourage attacks against team members that might be caused by poor advices or inadequate explanations.",
+    "score": 25
+  },
+  {
+    "id": 56,
+    "title": "Product teams",
+    "description": "Organize development teams in product teams. Product teams are usually small and promote skills over roles, self-organization, end-to-end product vision, cross-functionality (multidisciplinary), and have a single leadership over multiple management.",
+    "score": 25
+  },
+  {
+    "id": 59,
+    "title": "Horizontal DevOps teams",
+    "description": "Instantiate Horizontal DevOps teams through centers of excellence, chapters, and/or platform teams. Centers of excellence and platform teams are external teams that support product teams with platform servicing, and chapters designate people with DevOps skills across different product teams.",
+    "score": 25
+  },
+  {
+    "id": 60,
+    "title": "Dependency removal",
+    "description": "Remove dependencies with other teams composing the team of T-shaped members, i.e., people experienced in different areas that collaborate with each other, in a way that every skill-set required to have an end-to-end product vision is present in at least one member.",
+    "score": 25
+  },
+  {
+    "id": 68,
+    "title": "Responsibility training",
+    "description": "Train team members to take on more responsibility both in trainings and on the job by gradually granting them more responsibility; staff teams with a mix of experiences and new team members to foster on-the-job learning.",
+    "score": 25
+  },
+  {
+    "id": 69,
+    "title": "Silos removal",
+    "description": "Remove organizational and cultural silos. Any organizational structures that separate skill-sets or unable team self-organization hinder DevOps adoption.",
+    "score": 25
+  },
+  {
+    "id": 70,
+    "title": "Methodology training",
+    "description": "Let team members participate in development programs that train them in coping with the methodology and its challenges.",
+    "score": 25
+  },
+  {
+    "id": 3,
+    "title": "Transparent tasks",
+    "description": "Ensure that all the necessary information related to the team's tasks is always provided and transparent.",
+    "score": 0
+  },
+  {
+    "id": 4,
+    "title": "Supportive team",
+    "description": "Foster the creation of a healthy and safe environment. The team should be a space where team members are open to talk about private issues, emotions and feelings.",
+    "score": 0
+  },
+  {
+    "id": 57,
+    "title": "Member empowerment",
+    "description": "Increase the abilities, responsibilities, formal authority, effective capacity and involvement of broadly skilled frontline workers in problem solving, decision making and continuous improvement.",
+    "score": 0
+  }
+]

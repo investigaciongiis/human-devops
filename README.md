@@ -1,5 +1,5 @@
 # 🚀 Human-DevOps
-![version](https://img.shields.io/badge/version-v1.0.0-blue)
+![version](https://img.shields.io/badge/version-v1.1.0-blue)
 
 This project, **Human-DevOps**, consists of two separate subprojects interacting with each other:
 
@@ -142,7 +142,8 @@ cp .env.template .env
 # Public domain name (e.g. humandevops.online)
 DNS_DOMAIN=<DNS_DOMAIN>
 
-
+# HTTP PROTOCOL (e.g. https)
+HTTP_PROTOCOL=<HTTP_PROTOCOL>
 
 # ───── Ports ─────
 # External HTTP port (used by NGINX)
@@ -301,6 +302,27 @@ This project follows a **DevSecOps** approach, integrating security checks from 
 - **TLS certificates:** The repo ships **empty placeholders** (`fullchain.pem`, `privkey.pem`).  
   You must provide valid CA-signed certificates (or self-signed ones for local testing only).
 
+
+### 🧩 Optional: Enable phpMyAdmin (localhost only)
+
+By default, the environment only runs the **MySQL** database service.  
+If you want a local web UI to inspect the DB, an optional phpMyAdmin override is provided at:
+
+- `resources/docker-compose.phpmyadmin.yml`
+
+**Start with phpMyAdmin enabled (local only):**
+
+```bash
+
+docker compose -f docker-compose.yml -f resources/docker-compose.phpmyadmin.yml up --build -d
+
+```
+
+Once running, phpMyAdmin will be available at:
+
+http://localhost:8081
+
+
 ## 🎥 Demo Video
 
 Watch a single video a demo of the application:
@@ -313,6 +335,40 @@ Watch a single video a demo of the application:
 ## 🎬 Live Demo
 
 🔗 [Example Deployed Application](https://giis.inf.um.es/humanDevOps/)
+
+
+### 📊 Demo Data and Export Examples
+
+A dedicated directory has been added at:
+
+```
+Human-DevOps/
+└── resources/
+    └── demo/
+```
+
+This folder includes:
+- **`data_demo.sql`** → a complete SQL dataset that populates the database with sample human factors, their relationships, and recommendations.  
+- **Export examples** → example files of **Human Factors** and **Recommendations** available in all supported formats:
+  - `human-factors_demo.xlsx`
+  - `human-factors_demo.csv`
+  - `human-factors_demo.json`
+  - `recommendations_demo.xlsx`
+  - `recommendations_demo.csv`
+  - `recommendations_demo.json`
+
+These examples allow users to:
+- Experiment with the system without requiring live Slack integration.
+- Inspect the structure and content of exported files.
+- Reproduce and analyze how recommendations evolve over time.
+
+> 💡 **Tip:** To load the demo dataset, import `data_demo.sql` into your MySQL instance before starting the backend container:
+
+```bash
+
+docker exec -i mysql mysql -u<user> -p<password> <database> < resources/demo/data_demo.sql
+
+```
 
 
 ## 📘 API Documentation

@@ -1,0 +1,1017 @@
+[
+  {
+    "id": 1,
+    "title": "Trust",
+    "description": "",
+    "cluster": "PERCEPTION_AND_PERSONALITY",
+    "score": 1,
+    "affectedBy": [
+      12,
+      30,
+      37,
+      47,
+      32,
+      41,
+      44,
+      25
+    ],
+    "affectsTo": [
+      2,
+      9
+    ],
+    "affectedByCount": 8,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 2,
+    "title": "Trust belief",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.5,
+    "affectedBy": [
+      1
+    ],
+    "affectsTo": [
+      3,
+      8
+    ],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 3,
+    "title": "Performance expectancy",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.25,
+    "affectedBy": [
+      2,
+      53,
+      35
+    ],
+    "affectsTo": [
+      4
+    ],
+    "affectedByCount": 3,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 4,
+    "title": "Imposition",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [
+      5,
+      3,
+      61
+    ],
+    "affectsTo": [
+      5,
+      6
+    ],
+    "affectedByCount": 3,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 5,
+    "title": "Voluntariness",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.25,
+    "affectedBy": [
+      4
+    ],
+    "affectsTo": [
+      4
+    ],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 6,
+    "title": "Resistance to change",
+    "description": "",
+    "cluster": "PERCEPTION_AND_PERSONALITY",
+    "score": 0.5,
+    "affectedBy": [
+      47,
+      59,
+      15,
+      49,
+      4,
+      17,
+      57,
+      18
+    ],
+    "affectsTo": [
+      7
+    ],
+    "affectedByCount": 8,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 7,
+    "title": "Motivation for change",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.75,
+    "affectedBy": [
+      39,
+      6
+    ],
+    "affectsTo": [],
+    "affectedByCount": 2,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 8,
+    "title": "Perceived risk",
+    "description": "",
+    "cluster": "PERCEPTION_AND_PERSONALITY",
+    "score": 0.75,
+    "affectedBy": [
+      2,
+      52
+    ],
+    "affectsTo": [],
+    "affectedByCount": 2,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 9,
+    "title": "Respect from supervisors",
+    "description": "",
+    "cluster": "SUPPORT",
+    "score": 0.5,
+    "affectedBy": [
+      1,
+      34
+    ],
+    "affectsTo": [
+      10,
+      11
+    ],
+    "affectedByCount": 2,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 10,
+    "title": "Satisfaction",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.25,
+    "affectedBy": [
+      59,
+      9,
+      23,
+      18
+    ],
+    "affectsTo": [],
+    "affectedByCount": 4,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 11,
+    "title": "Negative experiences",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.5,
+    "affectedBy": [
+      50,
+      58,
+      9
+    ],
+    "affectsTo": [],
+    "affectedByCount": 3,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 12,
+    "title": "Technical and methodological skills",
+    "description": "",
+    "cluster": "SKILLS",
+    "score": 0.75,
+    "affectedBy": [
+      51,
+      14
+    ],
+    "affectsTo": [
+      1
+    ],
+    "affectedByCount": 2,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 13,
+    "title": "Learning and forgetting",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0,
+    "affectedBy": [],
+    "affectsTo": [
+      14
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 14,
+    "title": "Education and learning",
+    "description": "",
+    "cluster": "SKILLS",
+    "score": 0.5,
+    "affectedBy": [
+      21,
+      13
+    ],
+    "affectsTo": [
+      12,
+      15,
+      16
+    ],
+    "affectedByCount": 2,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 15,
+    "title": "Leadership",
+    "description": "",
+    "cluster": "SUPPORT",
+    "score": 0.25,
+    "affectedBy": [
+      14,
+      25
+    ],
+    "affectsTo": [
+      6
+    ],
+    "affectedByCount": 2,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 16,
+    "title": "Multitask workers",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [
+      14,
+      44
+    ],
+    "affectsTo": [],
+    "affectedByCount": 2,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 17,
+    "title": "Financial resources",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [],
+    "affectsTo": [
+      6
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 18,
+    "title": "Time/comercial pressures",
+    "description": "",
+    "cluster": "CUSTOMER",
+    "score": 0.75,
+    "affectedBy": [],
+    "affectsTo": [
+      10,
+      19,
+      6
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 19,
+    "title": "Perceived enjoyment",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.5,
+    "affectedBy": [
+      31,
+      18
+    ],
+    "affectsTo": [],
+    "affectedByCount": 2,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 20,
+    "title": "Focus",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.5,
+    "affectedBy": [
+      34
+    ],
+    "affectsTo": [
+      21,
+      22
+    ],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 21,
+    "title": "Boredom",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.75,
+    "affectedBy": [
+      36,
+      20
+    ],
+    "affectsTo": [
+      14
+    ],
+    "affectedByCount": 2,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 22,
+    "title": "Indifferent to change",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.5,
+    "affectedBy": [
+      36,
+      20,
+      35
+    ],
+    "affectsTo": [],
+    "affectedByCount": 3,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 23,
+    "title": "Recognition and rewards",
+    "description": "",
+    "cluster": "SUPPORT",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      10,
+      24
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 24,
+    "title": "Humane orientation",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.25,
+    "affectedBy": [
+      23
+    ],
+    "affectsTo": [],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 25,
+    "title": "Role understanding",
+    "description": "",
+    "cluster": "INFORMATION",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      1,
+      26,
+      15
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 26,
+    "title": "Resistance to lead",
+    "description": "",
+    "cluster": "SUPPORT",
+    "score": 0.5,
+    "affectedBy": [
+      25
+    ],
+    "affectsTo": [],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 27,
+    "title": "Customer involvement",
+    "description": "",
+    "cluster": "CUSTOMER",
+    "score": 1,
+    "affectedBy": [],
+    "affectsTo": [
+      28
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 28,
+    "title": "Customer risk factors",
+    "description": "",
+    "cluster": "CUSTOMER",
+    "score": 0.75,
+    "affectedBy": [
+      27
+    ],
+    "affectsTo": [],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 29,
+    "title": "Self-efficacy",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.5,
+    "affectedBy": [
+      30
+    ],
+    "affectsTo": [
+      30
+    ],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 30,
+    "title": "Computer self-efficacy",
+    "description": "",
+    "cluster": "SKILLS",
+    "score": 0.5,
+    "affectedBy": [
+      29
+    ],
+    "affectsTo": [
+      29,
+      31,
+      1
+    ],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 31,
+    "title": "Effort expectancy",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.5,
+    "affectedBy": [
+      30
+    ],
+    "affectsTo": [
+      19
+    ],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 32,
+    "title": "Communication",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [],
+    "affectsTo": [
+      33,
+      1,
+      34
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 33,
+    "title": "Extraversion",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.5,
+    "affectedBy": [
+      37,
+      32
+    ],
+    "affectsTo": [],
+    "affectedByCount": 2,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 34,
+    "title": "The clarity of the goal",
+    "description": "",
+    "cluster": "INFORMATION",
+    "score": 0.5,
+    "affectedBy": [
+      32
+    ],
+    "affectsTo": [
+      20,
+      9
+    ],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 35,
+    "title": "Lack of evidence of benefits",
+    "description": "",
+    "cluster": "INFORMATION",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      3,
+      36,
+      22
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 36,
+    "title": "Engagement",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.5,
+    "affectedBy": [
+      45,
+      38,
+      35
+    ],
+    "affectsTo": [
+      37,
+      21,
+      22,
+      38
+    ],
+    "affectedByCount": 3,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 37,
+    "title": "Team spirit",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.5,
+    "affectedBy": [
+      42,
+      40,
+      36,
+      41
+    ],
+    "affectsTo": [
+      33,
+      1
+    ],
+    "affectedByCount": 4,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 38,
+    "title": "Creativity and innovation",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.5,
+    "affectedBy": [
+      42,
+      36,
+      41
+    ],
+    "affectsTo": [
+      36,
+      39
+    ],
+    "affectedByCount": 3,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 39,
+    "title": "Openness to experience",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.75,
+    "affectedBy": [
+      38
+    ],
+    "affectsTo": [
+      7,
+      40
+    ],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 40,
+    "title": "Need for cognition",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.5,
+    "affectedBy": [
+      50,
+      47,
+      39,
+      55
+    ],
+    "affectsTo": [
+      37,
+      41
+    ],
+    "affectedByCount": 4,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 41,
+    "title": "Collaboration",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [
+      40,
+      57,
+      44
+    ],
+    "affectsTo": [
+      42,
+      37,
+      38,
+      1,
+      43
+    ],
+    "affectedByCount": 3,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 42,
+    "title": "Team work",
+    "description": "",
+    "cluster": "SKILLS",
+    "score": 0.5,
+    "affectedBy": [
+      41
+    ],
+    "affectsTo": [
+      37,
+      38
+    ],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 43,
+    "title": "Product team",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [
+      48,
+      46,
+      49,
+      63,
+      41,
+      44
+    ],
+    "affectsTo": [],
+    "affectedByCount": 6,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 44,
+    "title": "Autonomous workers",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 1,
+    "affectedBy": [],
+    "affectsTo": [
+      1,
+      43,
+      16,
+      41
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 45,
+    "title": "Social influence",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      36
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 46,
+    "title": "Horizontal DevOps team",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [],
+    "affectsTo": [
+      43
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 47,
+    "title": "Conscientiousness",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      40,
+      1,
+      6
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 48,
+    "title": "Team autonomy",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [],
+    "affectsTo": [
+      43
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 49,
+    "title": "Product ownership sharing",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      6,
+      43
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 50,
+    "title": "Emotionality",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.75,
+    "affectedBy": [],
+    "affectsTo": [
+      11,
+      40
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 51,
+    "title": "Knowledge transfer",
+    "description": "",
+    "cluster": "SKILLS",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      12
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 52,
+    "title": "Optimism bias",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      8
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 53,
+    "title": "Compatibility",
+    "description": "",
+    "cluster": "PERCEPTION",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      3
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 54,
+    "title": "Responsibility and decision skills",
+    "description": "",
+    "cluster": "SKILLS",
+    "score": 0.75,
+    "affectedBy": [],
+    "affectsTo": [],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 55,
+    "title": "Honesty-Humility",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      40
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 56,
+    "title": "Supporters",
+    "description": "",
+    "cluster": "SUPPORT",
+    "score": 0.5,
+    "affectedBy": [
+      59
+    ],
+    "affectsTo": [],
+    "affectedByCount": 1,
+    "origin": "Inferred",
+    "fullyMeasured": false
+  },
+  {
+    "id": 57,
+    "title": "Organizational and cultural silos",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [],
+    "affectsTo": [
+      6,
+      41
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 58,
+    "title": "Agreeableness",
+    "description": "",
+    "cluster": "PERSONALITY",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      11
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 59,
+    "title": "Support of supervisors",
+    "description": "",
+    "cluster": "SUPPORT",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [
+      10,
+      6,
+      56
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 60,
+    "title": "Exhaustion from high autonomy and responsibility",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [],
+    "affectsTo": [],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 61,
+    "title": "Continuous improvement culture",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [],
+    "affectsTo": [
+      4
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 62,
+    "title": "Recruitment",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.5,
+    "affectedBy": [],
+    "affectsTo": [],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  },
+  {
+    "id": 63,
+    "title": "Experienced and specialized members",
+    "description": "",
+    "cluster": "MANAGEMENT",
+    "score": 0.75,
+    "affectedBy": [],
+    "affectsTo": [
+      43
+    ],
+    "affectedByCount": 0,
+    "origin": "Measured",
+    "fullyMeasured": false
+  }
+]

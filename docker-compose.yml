@@ -33,9 +33,9 @@ services:
       SLACK_SIGNING_SECRET: ${SLACK_SIGNING_SECRET}
       SLACK_CLIENT_ID: ${SLACK_CLIENT_ID}
       SLACK_CLIENT_SECRET: ${SLACK_CLIENT_SECRET}
-      SLACK_REDIRECT_URI: "https://${DNS_DOMAIN}/api/slack/oauth_redirect"
-      SLACK_COMPLETION_URL: "https://${DNS_DOMAIN}/api/slack/oauth/completion"
-      SLACK_CANCELLATION_URL: "https://${DNS_DOMAIN}/api/slack/oauth/cancellation"
+      SLACK_REDIRECT_URI: "${HTTP_PROTOCOL}://${DNS_DOMAIN}/api/slack/oauth_redirect"
+      SLACK_COMPLETION_URL: "${HTTP_PROTOCOL}://${DNS_DOMAIN}/api/slack/oauth/completion"
+      SLACK_CANCELLATION_URL: "${HTTP_PROTOCOL}://${DNS_DOMAIN}/api/slack/oauth/cancellation"
     expose:
       - "${SERVER_PORT_API}"
     env_file:
@@ -50,7 +50,7 @@ services:
       context: .
       dockerfile: ./frontend/Dockerfile
       args:
-        REACT_APP_API_URL: "https://${DNS_DOMAIN}/api/"
+        REACT_APP_API_URL: "${HTTP_PROTOCOL}://${DNS_DOMAIN}/api/"
     container_name: frontend-app
     ports:
       - "${APP_PORT}:80"

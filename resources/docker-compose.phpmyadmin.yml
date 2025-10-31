@@ -1,0 +1,18 @@
+
+services:
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: human-devops-phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: "${MYSQL_PORT}"
+      PMA_ABSOLUTE_URI: http://localhost:8081/
+      UPLOAD_LIMIT: 64M
+    ports:
+      - "8081:80"
+    networks:
+      - human-net
