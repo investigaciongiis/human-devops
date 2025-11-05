@@ -49,7 +49,7 @@ Watch a single video covering installation, configuration, and a demo of the app
 These files do not contain any data and must be replaced with valid certificates and private keys for your domain during deployment.
 Similarly, no real credentials (e.g., tokens, secrets, passwords) are included in the repository. All sensitive values must be set manually in your .env file, using .env.template as a starting point.
 
-[![🎥 Installation & Demo](https://img.youtube.com/vi/DSReSXGM8p4/maxresdefault.jpg)](https://youtu.be/DSReSXGM8p4)
+[![🎥 Installation & Demo](https://img.youtube.com/vi/RTDYeBveagw/maxresdefault.jpg)](https://youtu.be/RTDYeBveagw)
 
 
 ### 🧾 1. Clone the repository
@@ -330,7 +330,7 @@ Watch a single video a demo of the application:
 > **ℹ️ Note:** This video shows the full end-to-end installation process and a demonstration of the tool. Some URLs or interfaces may have changed slightly since recording.
 
 
-[![🎥 Demo](https://img.youtube.com/vi/VwGNOOr-qVI/maxresdefault.jpg)](https://youtu.be/VwGNOOr-qVI)
+[![🎥 Demo](https://img.youtube.com/vi/wZlg-_gojrQ/maxresdefault.jpg)](https://youtu.be/wZlg-_gojrQ)
 
 ## 🎬 Live Demo
 
