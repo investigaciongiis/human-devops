@@ -370,6 +370,67 @@ docker exec -i mysql mysql -u<user> -p<password> <database> < resources/demo/dat
 
 ```
 
+### 🧪 Usability Evaluation Data and Supporting Material
+
+A dedicated directory has been added at:
+
+```
+Human-DevOps/
+└── resources/
+    └── usability-evaluation/
+        ├── Evaluation.pdf
+        ├── TasksStatement.pdf
+        └── data/
+            ├── HumanDevOps_ExpertStudy_Calculations_ES.xlsx
+            ├── HumanDevOps_ExpertStudy_Values.xlsx
+            ├── HumanDevOps_StudentStudy_Calculations_ES.xlsx
+            └── HumanDevOps_StudentStudy_Values.xlsx
+
+```
+
+This directory  contains all materials related to the **expert** and **student** usability evaluations of the *Human DevOps* tool. The content is organized into **documentation files** and **data spreadsheets** to ensure full transparency and reproducibility.
+
+
+---
+
+#### 📄 Evaluation and Procedure Documents
+
+- **[`Evaluation.pdf`](https://github.com/investigaciongiis/human-devops/raw/refs/heads/main/resources/usability-evaluation/Evaluation.pdf)** → complete report summarizing the usability assessments performed with experts and students, including SUS, ISO 9241-11, and TAM results.  
+- **[`TasksStatement.pdf`](https://github.com/investigaciongiis/human-devops/raw/refs/heads/main/resources/usability-evaluation/TasksStatement.pdf)** → document provided to participants describing the evaluation procedure and the tasks to be performed.
+
+---
+
+All dataset files are located under:
+
+```
+Human-DevOps/
+└── resources/
+    └── usability-evaluation/
+        └── data/
+
+```
+
+
+Each evaluation (expert and student) is provided in **two spreadsheet versions**:
+
+| File | Description |
+|------|--------------|
+| [`HumanDevOps_ExpertStudy_Calculations_ES.xlsx`](https://github.com/investigaciongiis/human-devops/raw/refs/heads/main/resources/usability-evaluation/data/HumanDevOps_ExpertStudy_Calculations_ES.xlsx) | Full Excel sheet for the experts evaluation, including all formulas in Spanish (`=SI()`, `=PROMEDIO()`, etc.). |
+| [`HumanDevOps_ExpertStudy_Values.xlsx`](https://github.com/investigaciongiis/human-devops/raw/refs/heads/main/resources/usability-evaluation/data/HumanDevOps_ExpertStudy_Values.xlsx) | Static-value version of the experts dataset for reproducibility and international compatibility. |
+| [`HumanDevOps_StudentStudy_Calculations_ES.xlsx`](https://github.com/investigaciongiis/human-devops/raw/refs/heads/main/resources/usability-evaluation/data/HumanDevOps_StudentStudy_Calculations_ES.xlsx) | Full Excel sheet for the students evaluation, including all formulas in Spanish (`=SI()`, `=PROMEDIO()`, etc.). |
+| [`HumanDevOps_StudentStudy_Values.xlsx`](https://github.com/investigaciongiis/human-devops/raw/refs/heads/main/resources/usability-evaluation/data/HumanDevOps_StudentStudy_Values.xlsx) | Static-value version of the students dataset for reproducibility and international compatibility. |
+
+---
+
+These resources allow researchers and reviewers to:
+
+- Review and reproduce the **SUS**, **ISO 9241-11**, and **TAM** analyses conducted in both evaluations.  
+- Understand the **data collection process** and the **quantitative validation** of usability.  
+- Verify the **computations and indicators** used (e.g., Cronbach’s α, effectiveness, efficiency, and satisfaction metrics).
+
+
+**Note:** Please note that the sheets with the suffix '_Calculations_ES' use Excel functions in Spanish. For international use, refer to the sheets with the suffix '_Values.xlsx', in which all formulas have been replaced by their computed values.
+
 
 ## 📘 API Documentation
 
